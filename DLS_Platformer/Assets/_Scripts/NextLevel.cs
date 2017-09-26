@@ -27,6 +27,6 @@ public class NextLevel : MonoBehaviour {
 
 	public void GoToNextLevel()
 	{
-		Application.LoadLevel ("HurryUpFranco");
+		Application.LoadLevel ("main_menu");
 	}
 }

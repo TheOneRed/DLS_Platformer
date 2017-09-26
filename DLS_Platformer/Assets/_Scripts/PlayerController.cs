@@ -8,6 +8,7 @@ public class VelocityRange {
 	// PUBLIC INSTANCE VARIABLES
 	public float vMin, vMax;
 
+
 	// CONSTRUCTOR ++++++++++++++++++++++++++++++++
 	public VelocityRange(float vMin, float vMax) {
 		this.vMin = vMin;
@@ -20,6 +21,8 @@ public class PlayerController : MonoBehaviour {
 	public float speed = 50f;
 	public float jump = 500f;
 	public VelocityRange velocityRange = new VelocityRange(300f, 1000f);
+
+	public bool grounded = true;
 
 	private Rigidbody2D rgb;
 	private float _movingValue = 0;
@@ -60,18 +63,38 @@ public class PlayerController : MonoBehaviour {
 					}
 				}
 		// check if player is jumping
-		if ((Input.GetKey("space")))
+		if ((Input.GetKey("space")) && grounded == true)
 		{
-			
+				
 				if (absVelY < this.velocityRange.vMax)
 				{
+				Debug.Log (grounded);
 					forceY = this.jump;
 				}
 			}
 		// add force to the player to push him
 		this.rgb.AddForce(new Vector2(forceX, forceY));
-		}
+	}
+		
+	void OnCollisionEnter2D(Collision2D coll)
+	{
 
+		if (coll.gameObject.tag == "Ground")
+		{
+			Debug.Log (grounded);
+			grounded = true;
+		} 
+	}
+
+	void OnCollisionExit2D(Collision2D coll)
+	{
+
+		if (coll.gameObject.tag == "Ground")
+		{
+			Debug.Log (grounded);
+			grounded = false;
+		} 
+	}
 
 	}
 			
