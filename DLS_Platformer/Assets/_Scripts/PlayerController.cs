@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.rgb = gameObject.GetComponent<Rigidbody2D> ();
+		rgb = this.GetComponent<Rigidbody2D> ();
 	}
 	
 	// Update is called once per frame
@@ -70,10 +70,17 @@ public class PlayerController : MonoBehaviour {
 				{
 				Debug.Log (grounded);
 					forceY = this.jump;
+				Debug.Log (forceY);
+				this.rgb.AddRelativeForce (new Vector2(forceX, forceY));
 				}
 			}
 		// add force to the player to push him
-		this.rgb.AddForce(new Vector2(forceX, forceY));
+		Vector2 nw = new Vector2(forceX,forceY);
+		//this.rgb.AddForce(new Vector2(forceX, forceY));
+		//rgb.velocity(nw.normalized * speed);
+		rgb.velocity = speed * (nw.normalized);
+		//Debug.Log (this.rgb.velocity);
+
 	}
 		
 	void OnCollisionEnter2D(Collision2D coll)
