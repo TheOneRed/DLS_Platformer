@@ -19,8 +19,10 @@ public class VelocityRange {
 public class PlayerController : MonoBehaviour {
 
 	public float speed = 50f;
+	//public float runSpeed = 100f;
 	public float jump = 500f;
-	public VelocityRange velocityRange = new VelocityRange(300f, 1000f);
+	public VelocityRange velocityRange = new VelocityRange(10f, 10f);
+	//public VelocityRange velocityRangeRun = new VelocityRange (10f, 30f);
 
 	public bool grounded = true;
 
@@ -29,7 +31,8 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		rgb = this.GetComponent<Rigidbody2D> ();
+		//rgb = this.GetComponent<Rigidbody2D> ();
+		this.rgb = gameObject.GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
@@ -43,15 +46,23 @@ public class PlayerController : MonoBehaviour {
 
 		float absVelX = Mathf.Abs(this.rgb.velocity.x);
 		float absVelY = Mathf.Abs(this.rgb.velocity.y);
+		//float absVelZ = Mathf.Abs(this.rgb.velocity.x);
+		//float absVelW = Mathf.Abs(this.rgb.velocity.y);
 
 		this._movingValue = Input.GetAxis("Horizontal"); // gives moving variable a value of -1 to 1
 		// Update is called once per frame
 		if (this._movingValue != 0)
 		{ // player is moving
 				// move right
+			Debug.Log (rgb.velocity);
 				if (absVelX < this.velocityRange.vMax)
 					{
 						forceX = this.speed;
+				if(Input.GetKey(KeyCode.LeftShift)){
+					Debug.Log("Shift is clicked boi");
+					VelocityRange velocityRange = new VelocityRange (30f, 30f);
+					forceX = this.speed;
+						}
 					}
 				}
 				if (this._movingValue < 0)
@@ -70,15 +81,16 @@ public class PlayerController : MonoBehaviour {
 				{
 				Debug.Log (grounded);
 					forceY = this.jump;
+					grounded = false;
 				Debug.Log (forceY);
-				this.rgb.AddRelativeForce (new Vector2(forceX, forceY));
+				//this.rgb.AddRelativeForce (new Vector2(forceX, forceY));
 				}
 			}
 		// add force to the player to push him
-		Vector2 nw = new Vector2(forceX,forceY);
-		//this.rgb.AddForce(new Vector2(forceX, forceY));
+		//Vector2 nw = new Vector2(forceX,forceY);
+		this.rgb.AddForce(new Vector2(forceX, forceY));
 		//rgb.velocity(nw.normalized * speed);
-		rgb.velocity = speed * (nw.normalized);
+		//rgb.velocity = speed * (nw.normalized);
 		//Debug.Log (this.rgb.velocity);
 
 	}
