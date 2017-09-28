@@ -8,5 +8,6 @@ public class LoadScene : MonoBehaviour {
 	public void LoadByIndex(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
+		PlayerPrefs.SetInt ("Lv1Done", 0);
     }
 }

@@ -27,6 +27,7 @@ public class NextLevel : MonoBehaviour {
 
 	public void GoToNextLevel()
 	{
-		Application.LoadLevel ("main_menu");
+		PlayerPrefs.SetInt ("Lv1Done", 1);
+		Application.LoadLevel ("OverWorld");
 	}
 }
