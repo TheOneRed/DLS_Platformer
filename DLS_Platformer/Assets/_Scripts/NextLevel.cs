@@ -28,6 +28,6 @@ public class NextLevel : MonoBehaviour {
 	public void GoToNextLevel()
 	{
 		PlayerPrefs.SetInt ("Lv1Done", 1);
-		Application.LoadLevel ("OverWorld");
+		Application.LoadLevel ("KitchenOverWorld");
 	}
 }
