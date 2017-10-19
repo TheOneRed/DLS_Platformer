@@ -8,28 +8,33 @@ public class fallingspike : MonoBehaviour {
 
 	public float moveSpeed;
 	public Transform current;
+	public Rigidbody2D rig;
+	//public Transform ground;
+	//public Transform[] location;
 
-	public Transform[] location;
-
-	public int selection;
+	//public int selection;
 
 	// Use this for initialization
 	void Start () {
-		current = location [selection];
+		//current = location [selection];
+		//rig = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
 	void Update () {		
+		
 	}
 
 	void OnTriggerEnter2D(Collider2D otherCollider){
 
 		if (otherCollider.gameObject.CompareTag("Player")){
-			spikes.transform.position = Vector3.MoveTowards(spikes.transform.position, current.position, Time.deltaTime * moveSpeed);
-			if (spikes.transform.position == current.position) 
-			{
-				selection++;
-			}
+			rig.gravityScale = 1;
+			//spikes.transform.position = Vector2.MoveTowards(spikes.transform.position, current.transform.position, Time.deltaTime * moveSpeed);
+			//spikes.transform.Translate(current.transform.position, Space.World);
+			//if (spikes.transform.position == current.position)
+			//{
+			//	selection++;
+			//}
 		}
 
 	}

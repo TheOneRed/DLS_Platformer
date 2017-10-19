@@ -52,21 +52,29 @@ public class PlayerController2 : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll)
 	{
 
-		if (coll.gameObject.tag == "Ground")
+		if (coll.gameObject.tag == "Ground" || coll.gameObject.tag == "MovingPlatform")
 		{
 			Debug.Log (grounded);
 			grounded = true;
 		} 
+		if (coll.transform.tag == "MovingPlatform" ) 
+		{
+			transform.parent = coll.transform;
+		}
 	}
 
 	void OnCollisionExit2D(Collision2D coll)
 	{
 
-		if (coll.gameObject.tag == "Ground")
+		if (coll.gameObject.tag == "Ground" || coll.gameObject.tag == "MovingPlatform")
 		{
 			Debug.Log (grounded);
 			grounded = false;
 		} 
+		if(coll.transform.tag == "MovingPlatform")
+		{
+			transform.parent = null;
+		}
 	}
 
 	}
