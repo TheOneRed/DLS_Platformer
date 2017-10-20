@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController2 : MonoBehaviour {
 	
 	public float speed = 50f;
-	public float runSpeed = 100f;
+	public float runSpeed = 65f;
 	public float normalSpeed;
 	public float jump = 200f;
 	public bool isRunning = false;
@@ -29,11 +29,12 @@ public class PlayerController2 : MonoBehaviour {
 
 		transform.Translate (x, 0, 0);
 
-		if (Input.GetKey (KeyCode.A) && Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.D) && Input.GetKey (KeyCode.LeftShift)) {
+		if (Input.GetKey (KeyCode.A) && Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.D) && Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.LeftArrow) && Input.GetKey (KeyCode.LeftShift)
+			|| Input.GetKey (KeyCode.RightArrow) && Input.GetKey (KeyCode.LeftShift)) {
 
 			isRunning = true;
 			speed = runSpeed;
-		} else if (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.D)) {
+		} else if (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.D) || Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.RightArrow)) {
 			isRunning = false;
 		} else {
 			isRunning = false;
