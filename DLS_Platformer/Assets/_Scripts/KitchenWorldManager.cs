@@ -11,6 +11,9 @@ public class KitchenWorldManager : MonoBehaviour {
 
 	public GameObject lv2Text;
 	public GameObject lv2Button;
+
+	public GameObject lv3Text;
+	public GameObject lv3Button;
 	//public GameObject lv2Location;
 
 	// Use this for initialization
@@ -27,6 +30,7 @@ public class KitchenWorldManager : MonoBehaviour {
 	void Awake() 
 	{
 		Lv2 ();
+		Lv3 ();
 	}
 
 	// Update is called once per frame
@@ -37,6 +41,7 @@ public class KitchenWorldManager : MonoBehaviour {
 	public void Lv2()
 	{
 		int Lv1Done = PlayerPrefs.GetInt("Lv1Done");
+		int Lv2Done = PlayerPrefs.GetInt("Lv2Done");
 		if (Lv1Done == 1)
 		{
 			GameObject Lv2Text = Instantiate (lv2Text) as GameObject;
@@ -51,6 +56,34 @@ public class KitchenWorldManager : MonoBehaviour {
 			//Lv2Location.transform.position = new Vector2 (7f, -3f);
 
 			Debug.Log (Lv1Done);
+			Debug.Log (Lv2Done);
+			//PlayerPrefs.SetInt ("LvDone", 0);
+			//int LvZero = PlayerPrefs.GetInt ("LvDone");
+			//Debug.Log (LvZero);
+		}
+	}
+
+	public void Lv3()
+	{
+		int Lv2Done = PlayerPrefs.GetInt("Lv2Done");
+		if (Lv2Done == 2)
+		{
+			GameObject Lv3Text = Instantiate (lv3Text) as GameObject;
+			canvas.transform.position = new Vector2 (-65f, -210f);
+			Lv3Text.transform.SetParent (canvas.transform);
+			Lv3Text.transform.localPosition = new Vector3 (-160f, 109, 385);
+
+			GameObject Lv3Button = Instantiate (lv3Button) as GameObject;
+			canvas.transform.position = new Vector2 (-220f, -292f);
+			Lv3Button.transform.SetParent (canvas.transform);
+			Lv3Button.transform.localPosition = new Vector3 (-31f, 109, 385);
+			//GameObject Lv2Location = Instantiate (lv2Location) as GameObject;
+			//Lv2Location.transform.position = new Vector2 (7f, -3f);
+
+			Debug.Log (Lv2Done);
+			//PlayerPrefs.SetInt ("LvDone", 0);
+			//int LvZero = PlayerPrefs.GetInt ("LvDone");
+			//Debug.Log (LvZero);
 		}
 	}
 }

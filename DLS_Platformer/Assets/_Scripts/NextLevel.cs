@@ -29,5 +29,20 @@ public class NextLevel : MonoBehaviour {
 	{
 		PlayerPrefs.SetInt ("Lv1Done", 1);
 		Application.LoadLevel ("KitchenOverWorld");
+
+		int Lv1Done = PlayerPrefs.GetInt("Lv1Done");
+
+		Debug.Log (Lv1Done);
+
+		if (Lv1Done == 1) 
+		{
+			PlayerPrefs.SetInt ("Lv2Done", 2);
+			Application.LoadLevel ("KitchenOverWorld");
+
+			int LvTest1 = PlayerPrefs.GetInt("Lv1Done");
+			Debug.Log (LvTest1);
+			int LvTest2 = PlayerPrefs.GetInt ("Lv2Done");
+			Debug.Log (LvTest2);
+		}
 	}
 }
