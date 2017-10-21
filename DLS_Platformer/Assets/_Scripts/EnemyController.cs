@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour {
 	public Transform visionStart;
 	public Transform visionEnd;
 	public int lifeValue;
+	public BoxCollider2D box;
+
 
 	//private instances
 	private Rigidbody2D rb2d;
@@ -25,6 +27,7 @@ public class EnemyController : MonoBehaviour {
 		this.rb2d = gameObject.GetComponent<Rigidbody2D>();
 		this._transform = gameObject.GetComponent<Transform>();
 		this.anim = gameObject.GetComponent<Animator> ();
+		this.box = gameObject.GetComponent<BoxCollider2D> ();
 
 	}
 	
@@ -51,6 +54,24 @@ public class EnemyController : MonoBehaviour {
 		else
 		{
 			this.anim.SetInteger("State", 0); // idle state
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D otherCollider){
+		
+		if (otherCollider.gameObject.CompareTag("Enemy"))
+		{
+			this._flip ();
+		}
+
+		if (otherCollider.gameObject.CompareTag("Spike"))
+		{
+			this._flip ();
+		}
+
+		if (otherCollider.gameObject.CompareTag("Wall"))
+		{
+			this._flip ();
 		}
 	}
 
