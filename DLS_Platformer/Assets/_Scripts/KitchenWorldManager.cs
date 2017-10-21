@@ -14,6 +14,9 @@ public class KitchenWorldManager : MonoBehaviour {
 
 	public GameObject lv3Text;
 	public GameObject lv3Button;
+
+	public GameObject lv4Text;
+	public GameObject lv4Button;
 	//public GameObject lv2Location;
 
 	// Use this for initialization
@@ -31,6 +34,7 @@ public class KitchenWorldManager : MonoBehaviour {
 	{
 		Lv2 ();
 		Lv3 ();
+		Lv4 ();
 	}
 
 	// Update is called once per frame
@@ -51,15 +55,6 @@ public class KitchenWorldManager : MonoBehaviour {
 			GameObject Lv2Button = Instantiate (lv2Button) as GameObject;
 			canvas.transform.position = new Vector2 (-220f, -292f);
 			Lv2Button.transform.SetParent (canvas.transform);
-
-			//GameObject Lv2Location = Instantiate (lv2Location) as GameObject;
-			//Lv2Location.transform.position = new Vector2 (7f, -3f);
-
-			Debug.Log (Lv1Done);
-			Debug.Log (Lv2Done);
-			//PlayerPrefs.SetInt ("LvDone", 0);
-			//int LvZero = PlayerPrefs.GetInt ("LvDone");
-			//Debug.Log (LvZero);
 		}
 	}
 
@@ -77,13 +72,22 @@ public class KitchenWorldManager : MonoBehaviour {
 			canvas.transform.position = new Vector2 (-220f, -292f);
 			Lv3Button.transform.SetParent (canvas.transform);
 			Lv3Button.transform.localPosition = new Vector3 (-31f, 109, 385);
-			//GameObject Lv2Location = Instantiate (lv2Location) as GameObject;
-			//Lv2Location.transform.position = new Vector2 (7f, -3f);
+		}
+	}
 
-			Debug.Log (Lv2Done);
-			//PlayerPrefs.SetInt ("LvDone", 0);
-			//int LvZero = PlayerPrefs.GetInt ("LvDone");
-			//Debug.Log (LvZero);
+	public void Lv4()
+	{
+		int Lv3Done = PlayerPrefs.GetInt ("Lv3Done");
+		if (Lv3Done == 3) {
+			GameObject Lv4Text = Instantiate (lv4Text) as GameObject;
+			canvas.transform.position = new Vector2 (-65f, -210f);
+			Lv4Text.transform.SetParent (canvas.transform);
+			Lv4Text.transform.localPosition = new Vector3 (-181f, -231, 385);
+
+			GameObject Lv4Button = Instantiate (lv4Button) as GameObject;
+			canvas.transform.position = new Vector2 (-220f, -292f);
+			Lv4Button.transform.SetParent (canvas.transform);
+			Lv4Button.transform.localPosition = new Vector3 (-54f, -231, 385);
 		}
 	}
 }

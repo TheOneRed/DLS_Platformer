@@ -11,7 +11,18 @@ public class LevelApperances : MonoBehaviour {
 
 	void Awake () 
 	{
-		Lv2 ();
+		//Lv2 ();
+	}
+
+	void Start()
+	{
+		PlayerPrefs.SetInt ("Lv1Done", 0);
+		PlayerPrefs.SetInt ("Lv2Done", 0);
+		PlayerPrefs.SetInt ("Lv3Done", 0);
+		int Lv1Done1 = PlayerPrefs.GetInt("Lv1Done");
+		int Lv1Done2 = PlayerPrefs.GetInt("Lv2Done");
+		Debug.Log("Lv1 save should be 0, " + Lv1Done1);
+		Debug.Log("Lv2 save should be 0, " + Lv1Done2);
 	}
 
 	public void Lv2()

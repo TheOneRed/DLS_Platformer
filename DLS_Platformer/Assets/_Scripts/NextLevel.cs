@@ -5,6 +5,7 @@ using UnityEngine;
 public class NextLevel : MonoBehaviour {
 
 	public AudioSource winSound;
+	bool Lv2Bool = false;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class NextLevel : MonoBehaviour {
 	{
 		if (Man.gameObject.tag == "Player") 
 		{
+			
 			Invoke ("GoToNextLevel", 0.5f);
 			winSound.Play ();
 		}
@@ -27,22 +29,37 @@ public class NextLevel : MonoBehaviour {
 
 	public void GoToNextLevel()
 	{
-		PlayerPrefs.SetInt ("Lv1Done", 1);
+		//PlayerPrefs.SetInt ("Lv1Done", 1);
 		Application.LoadLevel ("KitchenOverWorld");
-
 		int Lv1Done = PlayerPrefs.GetInt("Lv1Done");
 
-		Debug.Log (Lv1Done);
-
-		if (Lv1Done == 1) 
+		switch (Lv1Done)
 		{
+		case 0:
+			PlayerPrefs.SetInt ("Lv1Done", 1);
+			break;
+		case 1:
 			PlayerPrefs.SetInt ("Lv2Done", 2);
-			Application.LoadLevel ("KitchenOverWorld");
-
-			int LvTest1 = PlayerPrefs.GetInt("Lv1Done");
-			Debug.Log (LvTest1);
-			int LvTest2 = PlayerPrefs.GetInt ("Lv2Done");
-			Debug.Log (LvTest2);
+			PlayerPrefs.SetInt ("Lv3Done", 3);
+			break;
 		}
+
+		//Debug.Log (Lv1Done);
+
+		//if (Lv1Done == 1 && Lv2Bool == false) 
+		//{
+		//	Lv2Bool = true;
+			//PlayerPrefs.SetInt ("Lv2Done", 2);
+		//	Application.LoadLevel ("KitchenOverWorld");
+			//PlayerPrefs.SetInt ("Lv2Done", 2);
+			//int LvTest1 = PlayerPrefs.GetInt("Lv1Done");
+			//Debug.Log (LvTest1);
+			//int LvTest2 = PlayerPrefs.GetInt ("Lv2Done");
+			//Debug.Log ("Next Level Early " + LvTest2);
+		//}
+		//if (Lv1Done == 2 && Lv2Bool == true) 
+		//{
+			//PlayerPrefs.SetInt ("Lv2Done", 2);
+		//}
 	}
 }
