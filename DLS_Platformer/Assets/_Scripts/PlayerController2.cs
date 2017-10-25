@@ -10,6 +10,7 @@ public class PlayerController2 : MonoBehaviour {
 	public float jump = 200f;
 	public bool isRunning = false;
 	public bool grounded = true;
+	public GameObject platforms;
 
 	private Rigidbody2D rgb;
 	// Use this for initialization
@@ -36,7 +37,8 @@ public class PlayerController2 : MonoBehaviour {
 			speed = runSpeed;
 		} else if (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.D) || Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.RightArrow)) {
 			isRunning = false;
-		} else {
+		}
+		else {
 			isRunning = false;
 			speed = normalSpeed;
 		}
@@ -45,7 +47,25 @@ public class PlayerController2 : MonoBehaviour {
 		    {
 				grounded = false;
 				y = this.jump;
+				
 			}
+		if ((Input.GetKey(KeyCode.S)) && grounded == true)
+		{
+			this.GetComponent<BoxCollider2D>().enabled = false;
+
+		}
+
+		if (grounded == false && this.GetComponent<Rigidbody2D> ().velocity.y > 0)
+		{
+			//Physics2D.IgnoreCollision(this.GetComponent<BoxCollider2D>(), platforms.GetComponent<BoxCollider2D>());
+			//Physics2D.IgnoreLayerCollision(8, 0);
+			//Debug.Log (this.GetComponent<Rigidbody2D> ().velocity.y);
+			this.GetComponent<BoxCollider2D>().enabled = false;
+		}
+		if (this.GetComponent<Rigidbody2D> ().velocity.y < 0) 
+		{
+			this.GetComponent<BoxCollider2D>().enabled = true;
+		}
 
 		this.rgb.AddForce(new Vector2(0, y));
 		}
