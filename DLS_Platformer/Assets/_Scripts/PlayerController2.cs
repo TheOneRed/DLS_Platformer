@@ -73,12 +73,12 @@ public class PlayerController2 : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll)
 	{
 
-		if (coll.gameObject.tag == "Ground" || coll.gameObject.tag == "MovingPlatform")
+		if (coll.gameObject.tag == "Ground" || coll.gameObject.tag == "MovingPlatform" || coll.gameObject.tag == "RotatingPlatform")
 		{
 			Debug.Log (grounded);
 			grounded = true;
 		} 
-		if (coll.transform.tag == "MovingPlatform" ) 
+		if (coll.transform.tag == "MovingPlatform" || coll.gameObject.tag == "RotatingPlatform") 
 		{
 			transform.parent = coll.transform;
 		}
@@ -87,12 +87,12 @@ public class PlayerController2 : MonoBehaviour {
 	void OnCollisionExit2D(Collision2D coll)
 	{
 
-		if (coll.gameObject.tag == "Ground" || coll.gameObject.tag == "MovingPlatform")
+		if (coll.gameObject.tag == "Ground" || coll.gameObject.tag == "MovingPlatform" || coll.gameObject.tag == "RotatingPlatform")
 		{
 			Debug.Log (grounded);
 			grounded = false;
 		} 
-		if(coll.transform.tag == "MovingPlatform")
+		if(coll.transform.tag == "MovingPlatform" || coll.gameObject.tag == "RotatingPlatform")
 		{
 			transform.parent = null;
 		}
