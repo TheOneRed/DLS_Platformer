@@ -12,10 +12,19 @@ public class PlayerController2 : MonoBehaviour {
 	public bool grounded = true;
 	public GameObject platforms;
 
+	private ButtonController buttonController;
+
 	private Rigidbody2D rgb;
 	// Use this for initialization
 	void Start () {
 		this.rgb = gameObject.GetComponent<Rigidbody2D>();
+
+		GameObject buttonControllerObject = GameObject.FindWithTag("ButtonController");
+		if (buttonControllerObject != null)
+		{
+			buttonController = buttonControllerObject.GetComponent<ButtonController>();
+		}
+
 	}
 	
 	// Update is called once per frame
@@ -81,6 +90,11 @@ public class PlayerController2 : MonoBehaviour {
 		if (coll.transform.tag == "MovingPlatform" || coll.gameObject.tag == "RotatingPlatform") 
 		{
 			transform.parent = coll.transform;
+		}
+
+		if (coll.gameObject.tag == "Button") 
+		{
+			buttonController.ButtonDespawn ();
 		}
 	}
 
