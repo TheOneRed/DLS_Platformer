@@ -31,16 +31,33 @@ public class NextLevel : MonoBehaviour {
 	{
 		//PlayerPrefs.SetInt ("Lv1Done", 1);
 		Application.LoadLevel ("KitchenOverWorld");
-		int Lv1Done = PlayerPrefs.GetInt("Lv1Done");
+		//int Lv1Done = PlayerPrefs.GetInt("Lv1Done");
+		int LvDone = PlayerPrefs.GetInt("LvDone");
 
-		switch (Lv1Done)
+		switch (LvDone)
 		{
 		case 0:
-			PlayerPrefs.SetInt ("Lv1Done", 1);
+			//PlayerPrefs.SetInt ("Lv1Done", 1);
+			PlayerPrefs.SetInt ("LvDone", 1);
 			break;
 		case 1:
-			PlayerPrefs.SetInt ("Lv2Done", 2);
-			PlayerPrefs.SetInt ("Lv3Done", 3);
+			//PlayerPrefs.SetInt ("Lv2Done", 2);
+			PlayerPrefs.SetInt ("LvDone", 2);
+			int Lv2Done = PlayerPrefs.GetInt ("Lv2Done");
+			Debug.Log ("SWITCH STATEMENT LV2DONE = " + Lv2Done);
+			break;
+		case 2:
+			//PlayerPrefs.SetInt ("Lv3Done", 3);
+			PlayerPrefs.SetInt ("LvDone", 3);
+			int Lv3Done = PlayerPrefs.GetInt ("Lv3Done");
+			Debug.Log ("SWITCH STATEMENT LV3DONE = " + Lv3Done);
+			break;
+		case 3:
+			PlayerPrefs.SetInt ("LvDone", 4);
+			//PlayerPrefs.SetInt ("Lv4Done", 4);
+			break;
+		case 4:
+			PlayerPrefs.SetInt ("LvDone", 5);
 			break;
 		}
 

@@ -64,11 +64,11 @@ public class LoadScene : MonoBehaviour {
 			kitchenBackCreated = true;
 			Text Lv1Text = Instantiate (lv1Text) as Text;
 			Lv1Text.transform.SetParent (canvas.transform);
-			Lv1Text.transform.localPosition = new Vector3 (-425f, 105, 385);
+			Lv1Text.transform.localPosition = new Vector3 (-421f, -150, 385);
 
 			Button Lv1Button = Instantiate (lv1Button) as Button;
 			Lv1Button.transform.SetParent (canvas.transform);
-			Lv1Button.transform.localPosition = new Vector3 (-435f, 12, 385);
+			Lv1Button.transform.localPosition = new Vector3 (-435f, -216, 385);
 			//Lv1Text.rectTransform = new Vector3 (-435f, 12, 385);
 			//lv1Text.transform = new Vector3 (-435f, 12, 385);
 			//Lv1Text.transform.SetParent (canvas.transform);
