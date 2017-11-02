@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController2 : MonoBehaviour {
 	
@@ -11,6 +12,7 @@ public class PlayerController2 : MonoBehaviour {
 	public bool isRunning = false;
 	public bool grounded = true;
 	public GameObject platforms;
+	public Text lives;
 
 	private Rigidbody2D rgb;
 	// Use this for initialization
@@ -81,6 +83,17 @@ public class PlayerController2 : MonoBehaviour {
 		if (coll.transform.tag == "MovingPlatform" || coll.gameObject.tag == "RotatingPlatform") 
 		{
 			transform.parent = coll.transform;
+		}
+		if (coll.gameObject.tag == "Spike" || coll.gameObject.tag == "Enemy") 
+		{
+			int currentLives = int.Parse(lives.text);
+			currentLives--;
+			lives.text = currentLives.ToString ();
+			if (currentLives == 0) 
+			{
+				Application.LoadLevel(Application.loadedLevel);
+			}
+
 		}
 	}
 
