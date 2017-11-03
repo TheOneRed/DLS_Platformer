@@ -7,6 +7,9 @@ public class NextLevel : MonoBehaviour {
 	public AudioSource winSound;
 	bool Lv2Bool = false;
 
+	public string sceneToLoad;
+	public Color loadToColour = Color.black;
+
 	// Use this for initialization
 	void Start () {
 		winSound = GetComponent<AudioSource> ();
@@ -29,13 +32,13 @@ public class NextLevel : MonoBehaviour {
 
 	public void GoToNextLevel()
 	{
+		//ChangeLevel ();
 		//PlayerPrefs.SetInt ("Lv1Done", 1);
 		Application.LoadLevel ("KitchenOverWorld");
 		//int Lv1Done = PlayerPrefs.GetInt("Lv1Done");
-		int LvDone = PlayerPrefs.GetInt("LvDone");
+		int LvDone = PlayerPrefs.GetInt ("LvDone");
 
-		switch (LvDone)
-		{
+		switch (LvDone) {
 		case 0:
 			//PlayerPrefs.SetInt ("Lv1Done", 1);
 			PlayerPrefs.SetInt ("LvDone", 1);
@@ -60,7 +63,18 @@ public class NextLevel : MonoBehaviour {
 			PlayerPrefs.SetInt ("LvDone", 5);
 			break;
 		}
+		//GameObject.Find ("GameController").GetComponent<SceneTransitionFade>().BeginFade (1);
 
+	}
+
+
+		//IEnumerator ChangeLevel ()
+		//{
+		//Debug.Log ("SCENE CHANGING ENUMERATOR!");
+		//float fadeTime = GameObject.Find ("GameController").GetComponent<SceneTransitionFade>().BeginFade (1);
+		//yield return new WaitForSeconds (fadeTime);
+		//Application.LoadLevel (4);
+		//}
 		//Debug.Log (Lv1Done);
 
 		//if (Lv1Done == 1 && Lv2Bool == false) 
@@ -79,4 +93,4 @@ public class NextLevel : MonoBehaviour {
 			//PlayerPrefs.SetInt ("Lv2Done", 2);
 		//}
 	}
-}
+
