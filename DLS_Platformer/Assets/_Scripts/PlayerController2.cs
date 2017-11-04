@@ -13,6 +13,7 @@ public class PlayerController2 : MonoBehaviour {
 	public bool grounded = true;
 	public GameObject platforms;
 	public Text lives;
+	public Rigidbody2D environmentalDamager;
 
 	private Rigidbody2D rgb;
 	// Use this for initialization
@@ -93,7 +94,10 @@ public class PlayerController2 : MonoBehaviour {
 			{
 				Application.LoadLevel(Application.loadedLevel);
 			}
-
+		}
+		if (coll.gameObject.tag == "Button") 
+		{
+			environmentalDamager.gravityScale = 1;
 		}
 	}
 

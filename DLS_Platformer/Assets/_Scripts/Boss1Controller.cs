@@ -55,5 +55,11 @@ public class Boss1Controller : MonoBehaviour {
 		Debug.Log ("Boss colliding");
 		GameObject firingSprite = Instantiate (fireSprite) as GameObject;
 		firingSprite.transform.localPosition = new Vector3 (11f, 4, 385);
+
+		if (coll.gameObject.tag == "EnvironmentDamager") 
+		{
+			Destroy (coll.gameObject);
+			moveSpeed = 10;
+		}
 	}
 }
