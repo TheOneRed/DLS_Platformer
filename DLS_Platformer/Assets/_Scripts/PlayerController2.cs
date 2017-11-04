@@ -15,10 +15,19 @@ public class PlayerController2 : MonoBehaviour {
 	public Text lives;
 	public Rigidbody2D environmentalDamager;
 
+	private ButtonController buttonController;
 	private Rigidbody2D rgb;
+
 	// Use this for initialization
 	void Start () {
 		this.rgb = gameObject.GetComponent<Rigidbody2D>();
+
+		GameObject buttonControllerObject = GameObject.FindWithTag("ButtonController");
+		if (buttonControllerObject != null)
+		{
+			buttonController = buttonControllerObject.GetComponent<ButtonController>();
+		}
+
 	}
 	
 	// Update is called once per frame
@@ -75,6 +84,10 @@ public class PlayerController2 : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll)
 	{
+		if (coll.gameObject.tag == "Button")
+		{
+			buttonController.ButtonDespawn ();
+		} 
 
 		if (coll.gameObject.tag == "Ground" || coll.gameObject.tag == "MovingPlatform" || coll.gameObject.tag == "RotatingPlatform")
 		{
