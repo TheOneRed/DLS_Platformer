@@ -14,6 +14,8 @@ public class Boss1Controller : MonoBehaviour {
 	public Transform Platform1FireEndPoint;
 	bool changeLocations = true;
 
+	public bool singleFire = true;
+
 	//public Transform[] locations;
 
 	//public int selection;
@@ -50,11 +52,15 @@ public class Boss1Controller : MonoBehaviour {
 
 	}
 
-	void OnCollisionEnter2D(Collision2D coll)
+	void OnTriggerEnter2D(Collider2D coll)
 	{
 		Debug.Log ("Boss colliding");
-		GameObject firingSprite = Instantiate (fireSprite) as GameObject;
-		firingSprite.transform.localPosition = new Vector3 (11f, 4, 385);
+		if (singleFire == true && coll.gameObject.tag != "EnvironmentDamager") 
+		{
+			GameObject firingSprite = Instantiate (fireSprite) as GameObject;
+			firingSprite.transform.localPosition = new Vector3 (11f, 4, 385);
+			singleFire = false;
+		}
 
 		if (coll.gameObject.tag == "EnvironmentDamager") 
 		{
@@ -62,4 +68,10 @@ public class Boss1Controller : MonoBehaviour {
 			moveSpeed = 10;
 		}
 	}
+
+	void OnTriggerExit2D(Collider2D coll)
+	{
+		singleFire = true;
+	}
+
 }
