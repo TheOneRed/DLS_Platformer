@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class playerdestroyer : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public AudioClip deathSound;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -17,6 +19,7 @@ public class playerdestroyer : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D otherCollider){
 
 		if (otherCollider.gameObject.CompareTag("Player")){
+            SoundManager.instance.PlaySingle(deathSound);
 			Application.LoadLevel(Application.loadedLevel);
 		}
 

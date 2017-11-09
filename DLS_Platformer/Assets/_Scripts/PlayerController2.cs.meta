@@ -1,10 +1,17 @@
 fileFormatVersion: 2
 guid: 639f37563de437c49afe1915be6f43ec
-timeCreated: 1506558825
+timeCreated: 1510192547
 licenseType: Free
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - platforms: {instanceID: 0}
+  - lives: {instanceID: 0}
+  - environmentalDamager: {instanceID: 0}
+  - dmgSound: {fileID: 8300000, guid: cd5b7c668e24ea348a81b802b9f758b9, type: 3}
+  - deathSound: {fileID: 8300000, guid: 65dee431905ac5f45862d888b9c5a853, type: 3}
+  - jumpSound: {fileID: 8300000, guid: 803b2ba8fc453de46981525586f7d21b, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

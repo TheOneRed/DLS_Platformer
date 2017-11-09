@@ -14,6 +14,9 @@ public class PlayerController2 : MonoBehaviour {
 	public GameObject platforms;
 	public Text lives;
 	public Rigidbody2D environmentalDamager;
+    public AudioClip dmgSound;
+    public AudioClip deathSound;
+    public AudioClip jumpSound;
 
 	private ButtonController buttonController;
 	private Rigidbody2D rgb;
@@ -59,8 +62,9 @@ public class PlayerController2 : MonoBehaviour {
 		    {
 				grounded = false;
 				y = this.jump;
-				
-			}
+                SoundManager.instance.PlaySingle(jumpSound);
+
+        }
 		if ((Input.GetKey(KeyCode.S)) && grounded == true)
 		{
 			this.GetComponent<BoxCollider2D>().enabled = false;
@@ -103,8 +107,11 @@ public class PlayerController2 : MonoBehaviour {
 			int currentLives = int.Parse(lives.text);
 			currentLives--;
 			lives.text = currentLives.ToString ();
+            SoundManager.instance.PlaySingle(dmgSound);
 			if (currentLives == 0) 
 			{
+                SoundManager.instance.PlaySingle(deathSound);
+                //SoundManager.instance.musicSource.Stop();
 				Application.LoadLevel(Application.loadedLevel);
 			}
 		}
