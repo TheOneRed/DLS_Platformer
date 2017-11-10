@@ -18,7 +18,9 @@ public class playerdestroyer : MonoBehaviour {
 	//reloads the scene upon collision with the player.
 	void OnTriggerEnter2D(Collider2D otherCollider){
 
-		if (otherCollider.gameObject.CompareTag("Player")){
+        // ** Destroy the player if he falls **
+
+        if (otherCollider.gameObject.CompareTag("Player")){
             SoundManager.instance.PlaySingle(deathSound);
 			Application.LoadLevel(Application.loadedLevel);
 		}

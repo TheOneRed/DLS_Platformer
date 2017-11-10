@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class KitchenWorldManager : MonoBehaviour {
 
-	public GameObject canvas;
+    // ** Public Variables **
+
+    public GameObject canvas;
 	public Text lv1Text;
 	public Button lv1Button;
 
@@ -27,7 +29,10 @@ public class KitchenWorldManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Text Lv1Text = Instantiate (lv1Text) as Text;
+
+        // ** Level 1 button **
+
+        Text Lv1Text = Instantiate (lv1Text) as Text;
 		Lv1Text.transform.SetParent (canvas.transform);
 		Lv1Text.transform.localPosition = new Vector3 (-421f, -150, 385);
 
@@ -50,7 +55,9 @@ public class KitchenWorldManager : MonoBehaviour {
 		
 	}
 
-	public void Lv2()
+    // ** Activate each level if previous level is completed **
+
+    public void Lv2()
 	{
 		int Lv1Done = PlayerPrefs.GetInt("LvDone");
 		//int Lv2Done = PlayerPrefs.GetInt("Lv2Done");

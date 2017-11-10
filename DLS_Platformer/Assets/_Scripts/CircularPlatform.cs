@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CircularPlatform : MonoBehaviour {
 
+    // ** Public variables **
 
-	public GameObject centerOrbit;
+    public GameObject centerOrbit;
 	public float speed = 10;
 	float lockPlatform = 0;
 
@@ -22,7 +23,10 @@ public class CircularPlatform : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		this.transform.RotateAround (centerOrbit.transform.position, Vector3.forward, speed);
+
+        // ** Rotate platforms **
+
+        this.transform.RotateAround (centerOrbit.transform.position, Vector3.forward, speed);
 		transform.rotation = Quaternion.Euler(lockPlatform, lockPlatform, lockPlatform);
 	}
 }

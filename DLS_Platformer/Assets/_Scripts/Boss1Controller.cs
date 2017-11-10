@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Boss1Controller : MonoBehaviour {
 
-	public GameObject boss;
+    // ** Public variables **
+
+    public GameObject boss;
 	public GameObject fireSprite;
 	//GameObject fireSprite;
 
@@ -30,8 +32,9 @@ public class Boss1Controller : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        // ** Boss movement **
 
-		if (changeLocations == true)
+        if (changeLocations == true)
 		{
 			boss.transform.position = Vector3.MoveTowards (boss.transform.position, newPoint.position, Time.deltaTime * moveSpeed);
 		}
@@ -52,9 +55,12 @@ public class Boss1Controller : MonoBehaviour {
 
 	}
 
+
 	void OnTriggerEnter2D(Collider2D coll)
 	{
-		Debug.Log ("Boss colliding");
+        // ** Boss firing weapon **
+
+        Debug.Log ("Boss colliding");
 		if (singleFire == true && coll.gameObject.tag != "EnvironmentDamager") 
 		{
 			GameObject firingSprite = Instantiate (fireSprite) as GameObject;
@@ -62,7 +68,9 @@ public class Boss1Controller : MonoBehaviour {
 			singleFire = false;
 		}
 
-		if (coll.gameObject.tag == "EnvironmentDamager") 
+        // ** Boss damage **
+
+        if (coll.gameObject.tag == "EnvironmentDamager") 
 		{
 			Destroy (coll.gameObject);
 			moveSpeed = 10;

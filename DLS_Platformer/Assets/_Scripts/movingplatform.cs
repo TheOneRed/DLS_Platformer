@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class movingplatform : MonoBehaviour {
 
-	public GameObject platform;
+    // ** Public Variables **
+
+    public GameObject platform;
 
 	public float moveSpeed;
 	public Transform current;
@@ -22,7 +24,9 @@ public class movingplatform : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		platform.transform.position = Vector3.MoveTowards(platform.transform.position, current.position, Time.deltaTime * moveSpeed);
+        // ** Move the platform **
+
+        platform.transform.position = Vector3.MoveTowards(platform.transform.position, current.position, Time.deltaTime * moveSpeed);
 		if (platform.transform.position == current.position) 
 		{
 			selection++;

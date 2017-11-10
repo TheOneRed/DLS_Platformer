@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class ButtonController : MonoBehaviour {
 
-	public GameObject[] buttons;
+    // ** Public variables **
+
+    public GameObject[] buttons;
 	public GameObject current;
 
 
 	// Use this for initialization
 	void Start () {
-		foreach (GameObject go in buttons) {
+
+        // ** Activate buttons **
+
+        foreach (GameObject go in buttons) {
 			go.SetActive (false);
 			Debug.Log ("works");
 		}
@@ -23,14 +28,18 @@ public class ButtonController : MonoBehaviour {
 		
 	}
 
-	void ButtonSpawn() {
+    // ** Spawn buttons **
+
+    void ButtonSpawn() {
 
 		int index = Random.Range (0, buttons.Length);
 		current = buttons [index];
 		current.SetActive (true);
 	}
 
-	public void ButtonDespawn() {
+    // ** Despawn buttons **
+
+    public void ButtonDespawn() {
 		current.SetActive (false);
 		ButtonSpawn ();
 	}

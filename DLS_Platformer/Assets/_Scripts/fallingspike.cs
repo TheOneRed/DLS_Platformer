@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class fallingspike : MonoBehaviour {
 
-	public GameObject spikes;
+    // ** Public Variables  **
+
+    public GameObject spikes;
 
 	public float moveSpeed;
 	public Transform current;
@@ -27,7 +29,9 @@ public class fallingspike : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D otherCollider){
 
-		if (otherCollider.gameObject.CompareTag("Player")){
+        // ** Collide with player logic  **
+
+        if (otherCollider.gameObject.CompareTag("Player")){
 			rig.gravityScale = 1;
 			//spikes.transform.position = Vector2.MoveTowards(spikes.transform.position, current.transform.position, Time.deltaTime * moveSpeed);
 			//spikes.transform.Translate(current.transform.position, Space.World);

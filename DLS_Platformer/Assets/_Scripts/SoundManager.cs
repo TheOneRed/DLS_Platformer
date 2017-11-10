@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour {
 
+    // ** Public Variables  **
+
     public AudioSource efxSource;
     public AudioSource musicSource;
     public static SoundManager instance = null;
@@ -21,11 +23,15 @@ public class SoundManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
 	}
 
+    // ** Play audio once **
+
     public void PlaySingle (AudioClip clip)
     {
         efxSource.clip = clip;
         efxSource.Play();
     }
+
+    // ** Randomize pitch? **
 
     public void RandomizeSFX (params AudioClip [] clips)
     {

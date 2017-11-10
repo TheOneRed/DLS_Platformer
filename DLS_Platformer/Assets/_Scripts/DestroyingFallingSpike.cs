@@ -16,7 +16,9 @@ public class DestroyingFallingSpike : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D otherCollider){
 
-		if (otherCollider.gameObject.CompareTag("MovingSpikes")){
+        // ** Destroy the spike **
+
+        if (otherCollider.gameObject.CompareTag("MovingSpikes")){
 			Destroy (gameObject);
 		}
 

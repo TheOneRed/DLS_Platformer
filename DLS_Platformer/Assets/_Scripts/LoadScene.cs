@@ -6,14 +6,16 @@ using UnityEngine.UI;
 
 public class LoadScene : MonoBehaviour {
 
-	//public void LoadByIndex(int sceneIndex)
+    //public void LoadByIndex(int sceneIndex)
     //{
     //    SceneManager.LoadScene(sceneIndex);
-	//	PlayerPrefs.SetInt ("Lv1Done", 0);
+    //	PlayerPrefs.SetInt ("Lv1Done", 0);
     //}
 
 
-	public Camera mainCamera;
+    // ** Public Variables **
+
+    public Camera mainCamera;
 	public Text kitchenText;
 	public Button kitchenWorldButton;
 	public bool kitchenButtonClicked = false;

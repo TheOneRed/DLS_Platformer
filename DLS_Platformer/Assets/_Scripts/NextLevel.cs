@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class NextLevel : MonoBehaviour {
 
-	public AudioSource winSound;
+    // ** Public Variables **
+
+    public AudioSource winSound;
 	bool Lv2Bool = false;
 
 	public string sceneToLoad;
@@ -32,9 +34,11 @@ public class NextLevel : MonoBehaviour {
 
 	public void GoToNextLevel()
 	{
-		//ChangeLevel ();
-		//PlayerPrefs.SetInt ("Lv1Done", 1);
-		Application.LoadLevel ("KitchenOverWorld");
+        // ** Change levels  **
+
+        //ChangeLevel ();
+        //PlayerPrefs.SetInt ("Lv1Done", 1);
+        Application.LoadLevel ("KitchenOverWorld");
 		//int Lv1Done = PlayerPrefs.GetInt("Lv1Done");
 		int LvDone = PlayerPrefs.GetInt ("LvDone");
 

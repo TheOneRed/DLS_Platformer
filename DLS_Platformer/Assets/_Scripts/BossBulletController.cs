@@ -16,8 +16,9 @@ public class BossBulletController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll)
 	{
+        // ** Destroy the bullet **
 
-		if (coll.gameObject.tag == "Player") 
+        if (coll.gameObject.tag == "Player") 
 		{
 			Destroy (coll.gameObject);
 			Destroy (this.gameObject);

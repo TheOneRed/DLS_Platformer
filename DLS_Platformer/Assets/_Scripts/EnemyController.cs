@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
 
-	//public instances
-	public float speed = 1f;
+    // ** Public variables **
+
+    public float speed = 1f;
 	public Transform visionStart;
 	public Transform visionEnd;
 	public int lifeValue;
 	public BoxCollider2D box;
 
 
-	//private instances
-	private Rigidbody2D rb2d;
+    // ** Private variables **
+
+    private Rigidbody2D rb2d;
 	private Transform _transform;
 	private Animator anim;
 
@@ -24,7 +26,9 @@ public class EnemyController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		this.rb2d = gameObject.GetComponent<Rigidbody2D>();
+        // ** Getting components **
+
+        this.rb2d = gameObject.GetComponent<Rigidbody2D>();
 		this._transform = gameObject.GetComponent<Transform>();
 		this.anim = gameObject.GetComponent<Animator> ();
 		this.box = gameObject.GetComponent<BoxCollider2D> ();
@@ -37,7 +41,10 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if(this.grounded)
+
+        // ** Enemy movement **
+
+        if (this.grounded)
 		{
 			this.anim.SetInteger("State", 1); //waling state
 			this.rb2d.velocity = new Vector2(this._transform.localScale.x, 0) * this.speed;
@@ -58,8 +65,10 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D otherCollider){
-		
-		if (otherCollider.gameObject.CompareTag("Enemy"))
+
+        // ** Enemy collision logic **
+
+        if (otherCollider.gameObject.CompareTag("Enemy"))
 		{
 			this._flip ();
 		}
@@ -77,7 +86,9 @@ public class EnemyController : MonoBehaviour {
 
 	void OnCollisionStay2D(Collision2D otherCollider)
 	{
-		if (otherCollider.gameObject.CompareTag("Ground"))
+        // ** Verify if enemy is grounded  **
+
+        if (otherCollider.gameObject.CompareTag("Ground"))
 		{
 			this.grounded = true;
 		}
@@ -86,14 +97,17 @@ public class EnemyController : MonoBehaviour {
 
 	void OnCollisionExit2D(Collision2D otherCollider)
 	{
-		if (otherCollider.gameObject.CompareTag("Ground"))
+        // ** Verify if enemy is grounded  **
+
+        if (otherCollider.gameObject.CompareTag("Ground"))
 		{
 			this.grounded = true;
 		}
 	}
 
+    // ** Flip the enemy  **
 
-	private void _flip()
+    private void _flip()
 	{
 		if (this._transform.localScale.x == -1)
 		{
