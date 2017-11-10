@@ -20,10 +20,14 @@ public class PlayerController2 : MonoBehaviour {
 
 	private ButtonController buttonController;
 	private Rigidbody2D rgb;
+	private Animator animator;
+	private float _movingValue = 0;
 
 	// Use this for initialization
 	void Start () {
 		this.rgb = gameObject.GetComponent<Rigidbody2D>();
+		this.animator = gameObject.GetComponent<Animator> ();
+
 
 		GameObject buttonControllerObject = GameObject.FindWithTag("ButtonController");
 		if (buttonControllerObject != null)
@@ -41,30 +45,46 @@ public class PlayerController2 : MonoBehaviour {
 	void FixedUpdate() {
 
 		var x = Input.GetAxis ("Horizontal") * Time.deltaTime * speed;
+		this._movingValue = Input.GetAxis ("Horizontal"); 
 		float y = 0;
 
 		transform.Translate (x, 0, 0);
+		if (this._movingValue != 0) {
 
-		if (Input.GetKey (KeyCode.A) && Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.D) && Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.LeftArrow) && Input.GetKey (KeyCode.LeftShift)
-			|| Input.GetKey (KeyCode.RightArrow) && Input.GetKey (KeyCode.LeftShift)) {
+			if (this.grounded) {
 
-			isRunning = true;
-			speed = runSpeed;
-		} else if (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.D) || Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.RightArrow)) {
-			isRunning = false;
+				this.animator.SetInteger ("State", 1);
+				
+
+				if (Input.GetKey (KeyCode.A) && Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.D) && Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.LeftArrow) && Input.GetKey (KeyCode.LeftShift)
+				   || Input.GetKey (KeyCode.RightArrow) && Input.GetKey (KeyCode.LeftShift)) {
+
+					isRunning = true;
+					speed = runSpeed;
+				} else if (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.D) || Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.RightArrow)) {
+					isRunning = false;
+				} else {
+					this.animator.SetInteger ("State", 0);
+					isRunning = false;
+					speed = normalSpeed;
+				}
+			}
 		}
-		else {
-			isRunning = false;
-			speed = normalSpeed;
-		}
+		//&& grounded == true
 
-		if ((Input.GetKey(KeyCode.Space)) && grounded == true)
-		    {
+		if (Input.GetKey (KeyCode.Space)) {
+			
+			if (grounded == true) {
 				grounded = false;
 				y = this.jump;
-                SoundManager.instance.PlaySingle(jumpSound);
+				SoundManager.instance.PlaySingle (jumpSound);
+				this.animator.SetInteger ("State", 2);
+			} else {
+				this.animator.SetInteger ("State", 0);
+			}
 
-        }
+		}
+
 		if ((Input.GetKey(KeyCode.S)) && grounded == true)
 		{
 			this.GetComponent<BoxCollider2D>().enabled = false;
