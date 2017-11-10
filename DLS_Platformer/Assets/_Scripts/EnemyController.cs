@@ -95,13 +95,13 @@ public class EnemyController : MonoBehaviour {
 
 	private void _flip()
 	{
-		if (this._transform.localScale.x == -25)
+		if (this._transform.localScale.x == -1)
 		{
-			this._transform.localScale = new Vector3(25f, 25f, 1f);
+			this._transform.localScale = new Vector3(1f, 1f, 1f);
 		}
 		else
 		{
-			this._transform.localScale = new Vector3(-25f, 25f, 1f); 
+			this._transform.localScale = new Vector3(-1f, 1f, 1f); 
 		}
 	}
 
