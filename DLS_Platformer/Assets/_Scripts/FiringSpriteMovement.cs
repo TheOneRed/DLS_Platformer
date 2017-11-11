@@ -19,5 +19,6 @@ public class FiringSpriteMovement : MonoBehaviour {
 
 		//this.transform.position = Vector3.MoveTowards (this.transform.position, Platform1FireEndPoint.position, Time.deltaTime * moveSpeed);
 		this.transform.Translate (-0.1f,0,0, Space.World);
+
 	}
 }

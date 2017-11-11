@@ -173,6 +173,7 @@ public class PlayerController2 : MonoBehaviour {
 
         if (coll.gameObject.tag == "Button") 
 		{
+			
 			environmentalDamager.gravityScale = 1;
 		}
 	}

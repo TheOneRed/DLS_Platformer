@@ -7,7 +7,10 @@ public class Boss1Controller : MonoBehaviour {
     // ** Public variables **
 
     public GameObject boss;
-	public GameObject fireSprite;
+	public GameObject negativeFire;
+	public GameObject positiveFire;
+	public GameObject laserFire;
+	//public GameObject fireSprite;
 	//GameObject fireSprite;
 
 	public float moveSpeed;
@@ -17,6 +20,9 @@ public class Boss1Controller : MonoBehaviour {
 	bool changeLocations = true;
 
 	public bool singleFire = true;
+	public bool negative = true;
+	public bool positive = false;
+	public bool phase2 = false;
 
 	//public Transform[] locations;
 
@@ -61,17 +67,37 @@ public class Boss1Controller : MonoBehaviour {
         // ** Boss firing weapon **
 
         Debug.Log ("Boss colliding");
-		if (singleFire == true && coll.gameObject.tag != "EnvironmentDamager") 
+		if (singleFire == true && coll.gameObject.tag != "EnvironmentDamager" && phase2 == false) 
 		{
-			GameObject firingSprite = Instantiate (fireSprite) as GameObject;
-			firingSprite.transform.localPosition = new Vector3 (11f, 4, 385);
-			singleFire = false;
+			if (negative == true) 
+			{
+				GameObject negFire = Instantiate (negativeFire) as GameObject;
+				negFire.transform.localPosition = new Vector3 (11f, 4, 385);
+				singleFire = false;
+				negative = false;
+				positive = true;
+			}
+			else if (positive == true) 
+			{
+				GameObject negFire = Instantiate (positiveFire) as GameObject;
+				negFire.transform.localPosition = new Vector3 (11f, 4, 385);
+				singleFire = false;
+				positive = false;
+				negative = true;
+			}
+		}
+
+		if (singleFire == true && coll.gameObject.tag != "EnvironmentDamager" && phase2 == true) 
+		{
+			GameObject laseFire = Instantiate (laserFire) as GameObject;
+			laseFire.transform.localPosition = new Vector3 (11f, 4, 385);
 		}
 
         // ** Boss damage **
 
         if (coll.gameObject.tag == "EnvironmentDamager") 
 		{
+			phase2 = true;
 			Destroy (coll.gameObject);
 			moveSpeed = 10;
 		}
