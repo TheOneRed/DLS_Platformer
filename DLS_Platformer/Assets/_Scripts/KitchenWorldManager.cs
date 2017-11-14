@@ -126,12 +126,12 @@ public class KitchenWorldManager : MonoBehaviour {
 			GameObject Lv5Text = Instantiate (lv5Text) as GameObject;
 			canvas.transform.position = new Vector2 (-65f, -210f);
 			Lv5Text.transform.SetParent (canvas.transform);
-			Lv5Text.transform.localPosition = new Vector3 (282f, -301, 385);
+			Lv5Text.transform.localPosition = new Vector3 (435f, -13, 385);
 
 			GameObject Lv5Button = Instantiate (lv5Button) as GameObject;
 			canvas.transform.position = new Vector2 (-220f, -292f);
 			Lv5Button.transform.SetParent (canvas.transform);
-			Lv5Button.transform.localPosition = new Vector3 (282f, -231, 385);
+			Lv5Button.transform.localPosition = new Vector3 (448f, -117, 385);
 		}
 	}
 
@@ -146,12 +146,12 @@ public class KitchenWorldManager : MonoBehaviour {
 			GameObject Lv6Text = Instantiate (lv6Text) as GameObject;
 			canvas.transform.position = new Vector2 (-65f, -210f);
 			Lv6Text.transform.SetParent (canvas.transform);
-			Lv6Text.transform.localPosition = new Vector3 (435f, -13, 385);
+			Lv6Text.transform.localPosition = new Vector3 (282f, -301, 385);
 
 			GameObject Lv6Button = Instantiate (lv6Button) as GameObject;
 			canvas.transform.position = new Vector2 (-220f, -292f);
 			Lv6Button.transform.SetParent (canvas.transform);
-			Lv6Button.transform.localPosition = new Vector3 (448f, -117, 385);
+			Lv6Button.transform.localPosition = new Vector3 (282f, -231, 385);
 		}
 	}
 }
