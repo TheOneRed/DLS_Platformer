@@ -82,6 +82,10 @@ public class EnemyController : MonoBehaviour {
 		{
 			this._flip ();
 		}
+		if (otherCollider.gameObject.CompareTag("WallCollider"))
+		{
+			this._flip ();
+		}
 	}
 
 	void OnCollisionStay2D(Collision2D otherCollider)
