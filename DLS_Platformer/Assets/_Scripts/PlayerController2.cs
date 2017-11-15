@@ -138,7 +138,7 @@ public class PlayerController2 : MonoBehaviour {
 		}
 
         // ** Find out if the player is on the ground **
-        if (coll.gameObject.tag == "Ground" || coll.gameObject.tag == "MovingPlatform" || coll.gameObject.tag == "RotatingPlatform")
+		if (coll.gameObject.tag == "Ground" || coll.gameObject.tag == "MovingPlatform" || coll.gameObject.tag == "RotatingPlatform" || coll.gameObject.tag == "WallCollider")
 		{
 			Debug.Log (grounded);
 			grounded = true;

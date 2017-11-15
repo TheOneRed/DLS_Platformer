@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Scenes/KitchenOverWorld.unity
+- path: Assets/_Scenes/level 3 flying.unity
   isLoaded: 1
   isActive: 1
