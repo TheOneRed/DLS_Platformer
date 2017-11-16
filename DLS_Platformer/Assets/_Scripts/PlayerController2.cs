@@ -20,6 +20,8 @@ public class PlayerController2 : MonoBehaviour {
     public AudioClip dmgSound;
     public AudioClip deathSound;
     public AudioClip jumpSound;
+	public Canvas healthCanvas;
+	public int currentLives;
 
     // ** Private variables **
 
@@ -28,9 +30,17 @@ public class PlayerController2 : MonoBehaviour {
 	private Animator animator;
 	private float _movingValue = 0;
 
+	void awake()
+	{
+		//DontDestroyOnLoad(healthCanvas);
+	}
 	// Use this for initialization
 	void Start () {
 
+		//PlayerPrefs.SetInt ("currentLives", 3);
+		currentLives = PlayerPrefs.GetInt ("currentLives");
+		Debug.Log ("THIS IS CURRENTLIVES: " + currentLives);
+		lives.text = currentLives.ToString ();
         // **Getting components **
 
         this.rgb = gameObject.GetComponent<Rigidbody2D>();
@@ -153,21 +163,49 @@ public class PlayerController2 : MonoBehaviour {
 
         // ** Taking damage from enemies and hazards **
 
-        if (coll.gameObject.tag == "Spike" || coll.gameObject.tag == "Enemy") 
+		if (coll.gameObject.tag == "Spike" && currentLives == 3 || coll.gameObject.tag == "Enemy" && currentLives == 3) 
 		{
-			int currentLives = int.Parse(lives.text);
-			currentLives--;
-			lives.text = currentLives.ToString ();
-            SoundManager.instance.PlaySingle(dmgSound);
+			Debug.Log ("HEALTH SHOULD BECOME 2");
+			//Application.LoadLevel(Application.loadedLevel);
+			//PlayerPrefs.SetInt ("currentLives", 2);
+			PlayerPrefs.SetInt ("currentLives", 2);
+			//currentLives = int.Parse(lives.text);
+			//int currentLives = PlayerPrefs.GetInt ("currentLives");
+			//currentLives--;
+			//lives.text = currentLives.ToString ();
+			SoundManager.instance.PlaySingle (dmgSound);
+			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+		} 
+		else if (coll.gameObject.tag == "Spike" && currentLives == 2 || coll.gameObject.tag == "Enemy" && currentLives == 2) 
+		{
+			Debug.Log ("CHANGING CURRENTLIVES TO 1");
+			PlayerPrefs.SetInt ("currentLives", 1);
+			//currentLives = int.Parse(lives.text);
+			currentLives = PlayerPrefs.GetInt ("currentLives");
+			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+		} 
+		else if (coll.gameObject.tag == "Spike" && currentLives == 1 || coll.gameObject.tag == "Enemy" && currentLives == 1) 
+		{
+			PlayerPrefs.SetInt ("currentLives", 0);
+			//currentLives = int.Parse(lives.text);
+			currentLives = PlayerPrefs.GetInt ("currentLives");
+			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+		} 
+		else if (coll.gameObject.tag == "Spike" && currentLives == 0 || coll.gameObject.tag == "Enemy" && currentLives == 0) 
+		{
+			
+			Application.LoadLevel ("KitchenOverWorld");
+		}
 
             // ** Death and resurrection **
 
-            if (currentLives == 0) 
-			{
-                SoundManager.instance.PlaySingle(deathSound);
-				Application.LoadLevel(Application.loadedLevel);
-			}
-		}
+        //if (currentLives == 0) 
+		//	{
+        //        SoundManager.instance.PlaySingle(deathSound);
+				//Application.LoadLevel(Application.loadedLevel);
+		//		Application.LoadLevel ("KitchenOverWorld");
+		//	}
+		//}
 
         // ** Boss 1 button damage **
 

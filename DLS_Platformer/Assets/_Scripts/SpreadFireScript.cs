@@ -34,17 +34,11 @@ public class SpreadFireScript : MonoBehaviour {
 			CreateSpread (-30f);
 			CreateSpread (-15f);
 			CreateSpread (0f);
-			CreateSpread (15f);
-			CreateSpread (30f);
+			//CreateSpread (15f);
+			//CreateSpread (30f);
 			activateSpread = true;
-			//for (int i = 0; i < 5; i++) 
-			//{
-			//	Debug.Log ("CREATE 5 POS SHOTS YOOO");
-			//	GameObject posFire = Instantiate (positiveFire) as GameObject;
-			//	posFire.transform.position = transform.position;
-			//	singleFire = true;
-			//}
 		}
+
 		// ** Destroy the beam **
 
 		if (coll.gameObject.tag == "Beam") 
