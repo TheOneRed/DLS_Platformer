@@ -9,10 +9,7 @@ public class PlayerController2 : MonoBehaviour {
     // ** Public variables **
 
     public float speed = 50f;
-	public float runSpeed = 65f;
-	public float normalSpeed;
 	public float jump = 200f;
-	public bool isRunning = false;
 	public bool grounded = true;
 	public GameObject platforms;
 	public Text lives;
@@ -28,7 +25,9 @@ public class PlayerController2 : MonoBehaviour {
     private ButtonController buttonController;
 	private Rigidbody2D rgb;
 	private Animator animator;
+	private Transform transform;
 	private float _movingValue = 0;
+	private bool facingRight = true;
 
 	void awake()
 	{
@@ -45,6 +44,7 @@ public class PlayerController2 : MonoBehaviour {
 
         this.rgb = gameObject.GetComponent<Rigidbody2D>();
 		this.animator = gameObject.GetComponent<Animator> ();
+		this.transform = gameObject.GetComponent<Transform>();
 
 
 		GameObject buttonControllerObject = GameObject.FindWithTag("ButtonController");
@@ -69,33 +69,30 @@ public class PlayerController2 : MonoBehaviour {
 		float y = 0;
 
 		transform.Translate (x, 0, 0);
+// Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.D) || Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.RightArrow
 		if (this._movingValue != 0) {
-
-			if (this.grounded) {
-
 				this.animator.SetInteger ("State", 1);
-
-                // ** Running **
-
-                if (Input.GetKey (KeyCode.A) && Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.D) && Input.GetKey (KeyCode.LeftShift) || Input.GetKey (KeyCode.LeftArrow) && Input.GetKey (KeyCode.LeftShift)
-				   || Input.GetKey (KeyCode.RightArrow) && Input.GetKey (KeyCode.LeftShift)) {
-
-					isRunning = true;
-					speed = runSpeed;
-				} else if (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.D) || Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.RightArrow)) {
-					isRunning = false;
-				} else {
-					this.animator.SetInteger ("State", 0);
-					isRunning = false;
-					speed = normalSpeed;
-				}
+			} else {
+				this.animator.SetInteger ("State", 0);
 			}
+
+		if (this._movingValue > 0) {
+			
+			facingRight = true;
+			this._flip ();
+		} 
+
+		if (this._movingValue < 0) {
+
+			facingRight = false;
+			this._flip ();
 		}
+
 		//&& grounded == true
 
         // ** Player jump when space is pressed **
 
-		if (Input.GetKey (KeyCode.Space)) {
+		 if (Input.GetKey (KeyCode.Space)) {
 			
 			if (grounded == true) {
 				grounded = false;
@@ -137,6 +134,18 @@ public class PlayerController2 : MonoBehaviour {
 
         this.rgb.AddForce(new Vector2(0, y));
 		}
+
+	private void _flip()
+	{
+		if (this.facingRight)
+		{
+			this.transform.localScale = new Vector3(3f, 3f, 1f);
+		}
+		else
+		{
+			this.transform.localScale = new Vector3(-3f, 3f, 1f); 
+		}
+	}
 
 	void OnCollisionEnter2D(Collision2D coll)
 	{

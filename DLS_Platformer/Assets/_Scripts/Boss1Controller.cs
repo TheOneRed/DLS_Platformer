@@ -16,13 +16,21 @@ public class Boss1Controller : MonoBehaviour {
 	public float moveSpeed;
 	public Transform current;
 	public Transform newPoint;
+	public Transform visionStart;
+	public Transform visionEnd;
 	public Transform Platform1FireEndPoint;
+	public Transform FirePosition;
+	public float delay = 1.0f;
 	bool changeLocations = true;
+
 
 	public bool singleFire = true;
 	public bool negative = true;
 	public bool positive = false;
 	public bool phase2 = false;
+
+	private bool iSeeYou = false;
+	private float fire= 0.0f;
 
 	//public Transform[] locations;
 
@@ -58,41 +66,38 @@ public class Boss1Controller : MonoBehaviour {
 			changeLocations = true;
 		}
 
+		this.iSeeYou = Physics2D.Linecast(this.visionStart.position, this.visionEnd.position, 1 << LayerMask.NameToLayer("Player"));
+		Debug.DrawLine(this.visionStart.position, this.visionEnd.position);
 
-	}
+		if (iSeeYou = true) {
 
+			if (singleFire == true && phase2 == true && Time.time > fire) {
+				fire = Time.time + delay;
+				GameObject laseFire = Instantiate (laserFire, FirePosition.transform.position, FirePosition.rotation);
+				//laserFire.transform = new Vector3 (this.FirePosition);
+			}
 
-	void OnTriggerEnter2D(Collider2D coll)
-	{
-        // ** Boss firing weapon **
-
-        Debug.Log ("Boss colliding");
-		if (singleFire == true && coll.gameObject.tag != "EnvironmentDamager" && phase2 == false) 
-		{
-			if (negative == true) 
-			{
-				GameObject negFire = Instantiate (negativeFire) as GameObject;
-				negFire.transform.localPosition = new Vector3 (11f, 4, 385);
+			else if (negative == true && Time.time > fire) {
+				fire = Time.time + delay;
+				GameObject negFire = Instantiate (negativeFire, FirePosition.position, FirePosition.rotation);
+				//laserFire.transform = new Vector3 (this.FirePosition);
 				singleFire = false;
 				negative = false;
 				positive = true;
-			}
-			else if (positive == true) 
-			{
-				GameObject negFire = Instantiate (positiveFire) as GameObject;
-				negFire.transform.localPosition = new Vector3 (11f, 4, 385);
+			} else if (positive == true && Time.time > fire) {
+				fire = Time.time + delay;
+				GameObject negFire = Instantiate (positiveFire, FirePosition.position, FirePosition.rotation);
+				//laserFire.transform = new Vector3 (this.FirePosition);
 				singleFire = false;
 				positive = false;
 				negative = true;
 			}
 		}
+	}
 
-		if (singleFire == true && coll.gameObject.tag != "EnvironmentDamager" && phase2 == true) 
-		{
-			GameObject laseFire = Instantiate (laserFire) as GameObject;
-			laseFire.transform.localPosition = new Vector3 (11f, 4, 385);
-		}
 
+	void OnTriggerEnter2D(Collider2D coll)
+	{
         // ** Boss damage **
 
         if (coll.gameObject.tag == "EnvironmentDamager") 
