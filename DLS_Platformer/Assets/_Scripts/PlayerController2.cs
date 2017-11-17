@@ -202,7 +202,7 @@ public class PlayerController2 : MonoBehaviour {
 		} 
 		else if (coll.gameObject.tag == "Spike" && currentLives == 0 || coll.gameObject.tag == "Enemy" && currentLives == 0) 
 		{
-			
+			PlayerPrefs.SetInt ("currentLives", 3);
 			Application.LoadLevel ("KitchenOverWorld");
 		}
 

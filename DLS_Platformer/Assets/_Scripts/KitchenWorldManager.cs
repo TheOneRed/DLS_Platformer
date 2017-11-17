@@ -25,13 +25,16 @@ public class KitchenWorldManager : MonoBehaviour {
 
 	public GameObject lv6Text;
 	public GameObject lv6Button;
+
+	public Text lives;
+	public int currentLives;
 	//public GameObject lv2Location;
 
 	// Use this for initialization
 	void Start () {
 
         // ** Level 1 button **
-		PlayerPrefs.SetInt ("currentLives", 3);
+		//PlayerPrefs.SetInt ("currentLives", 3);
         Text Lv1Text = Instantiate (lv1Text) as Text;
 		Lv1Text.transform.SetParent (canvas.transform);
 		Lv1Text.transform.localPosition = new Vector3 (-421f, -229, 385);
@@ -39,6 +42,8 @@ public class KitchenWorldManager : MonoBehaviour {
 		Button Lv1Button = Instantiate (lv1Button) as Button;
 		Lv1Button.transform.SetParent (canvas.transform);
 		Lv1Button.transform.localPosition = new Vector3 (-435f, -291, 385);
+
+		//lives.text = currentLives.ToString ();
 	}
 
 	void Awake() 
@@ -52,7 +57,13 @@ public class KitchenWorldManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+		currentLives = PlayerPrefs.GetInt ("currentLives");
+		//Debug.Log ("LIVES AT KITCHEN MENU: " + currentLives);
+		lives.text = currentLives.ToString ();
+		//if (currentLives == 0) 
+		//{
+		//	PlayerPrefs.SetInt ("currentLives", 3);
+		//}
 	}
 
     // ** Activate each level if previous level is completed **
@@ -78,7 +89,7 @@ public class KitchenWorldManager : MonoBehaviour {
 
 	public void Lv3()
 	{
-		int Lv2Done = PlayerPrefs.GetInt("LvDone");
+		int Lv2Done = PlayerPrefs.GetInt ("LvDone");
 		if (Lv2Done == 2 || Lv2Done == 3 || Lv2Done == 4 || Lv2Done == 5)
 		{
 			Debug.Log ("LV2DONE = " + Lv2Done);
