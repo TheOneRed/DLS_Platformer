@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NextLevel : MonoBehaviour {
 
@@ -15,7 +16,9 @@ public class NextLevel : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		winSound = GetComponent<AudioSource> ();
-	}
+        
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -41,7 +44,7 @@ public class NextLevel : MonoBehaviour {
         Application.LoadLevel ("KitchenOverWorld");
 		//int Lv1Done = PlayerPrefs.GetInt("Lv1Done");
 		int LvDone = PlayerPrefs.GetInt ("LvDone");
-
+        string scene = SceneManager.GetActiveScene().name;
 		switch (LvDone) {
 		case 0:
 			//PlayerPrefs.SetInt ("Lv1Done", 1);
@@ -49,15 +52,23 @@ public class NextLevel : MonoBehaviour {
 			break;
 		case 1:
 			//PlayerPrefs.SetInt ("Lv2Done", 2);
-			PlayerPrefs.SetInt ("LvDone", 2);
-			int Lv2Done = PlayerPrefs.GetInt ("Lv2Done");
-			Debug.Log ("SWITCH STATEMENT LV2DONE = " + Lv2Done);
+            if(scene == "level 2")
+                {
+                    PlayerPrefs.SetInt ("LvDone", 2);
+			        int Lv2Done = PlayerPrefs.GetInt ("Lv2Done");
+			        Debug.Log ("SWITCH STATEMENT LV2DONE = " + Lv2Done);
+                }
+			
 			break;
 		case 2:
 			//PlayerPrefs.SetInt ("Lv3Done", 3);
-			PlayerPrefs.SetInt ("LvDone", 3);
-			int Lv3Done = PlayerPrefs.GetInt ("Lv3Done");
-			Debug.Log ("SWITCH STATEMENT LV3DONE = " + Lv3Done);
+            if(scene == "level 3 flying")
+                {
+                    PlayerPrefs.SetInt ("LvDone", 3);
+			        int Lv3Done = PlayerPrefs.GetInt ("Lv3Done");
+			        Debug.Log ("SWITCH STATEMENT LV3DONE = " + Lv3Done);
+                }
+			
 			break;
 		case 3:
 			PlayerPrefs.SetInt ("LvDone", 4);
