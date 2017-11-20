@@ -10,6 +10,7 @@ public class Boss1Controller : MonoBehaviour {
 	public GameObject negativeFire;
 	public GameObject positiveFire;
 	public GameObject laserFire;
+	public GameObject environmentDamager;
 	//public GameObject fireSprite;
 	//GameObject fireSprite;
 
@@ -105,6 +106,7 @@ public class Boss1Controller : MonoBehaviour {
 			phase2 = true;
 			Destroy (coll.gameObject);
 			moveSpeed = 10;
+			//Instantiate (environmentDamager);
 		}
 	}
 

@@ -13,7 +13,8 @@ public class PlayerController2 : MonoBehaviour {
 	public bool grounded = true;
 	public GameObject platforms;
 	public Text lives;
-	public Rigidbody2D environmentalDamager;
+	//public Rigidbody2D environmentalDamager;
+	public GameObject environmentDamager;
     public AudioClip dmgSound;
     public AudioClip deathSound;
     public AudioClip jumpSound;
@@ -28,6 +29,7 @@ public class PlayerController2 : MonoBehaviour {
 	private Transform transform;
 	private float _movingValue = 0;
 	private bool facingRight = true;
+	private GameObject environDamager;
 
 	void awake()
 	{
@@ -35,7 +37,7 @@ public class PlayerController2 : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-
+		environDamager = Instantiate (environmentDamager) as GameObject;
 		//PlayerPrefs.SetInt ("currentLives", 3);
 		currentLives = PlayerPrefs.GetInt ("currentLives");
 		Debug.Log ("THIS IS CURRENTLIVES: " + currentLives);
@@ -221,7 +223,10 @@ public class PlayerController2 : MonoBehaviour {
         if (coll.gameObject.tag == "Button") 
 		{
 			
-			environmentalDamager.gravityScale = 1;
+			//environmentalDamager.gravityScale = 1;
+			//environmentDamager.GetComponent<Rigidbody2D>().gravityScale = 1;
+			environDamager.GetComponent<Rigidbody2D>().gravityScale = 1;
+			environDamager = Instantiate (environmentDamager) as GameObject;
 		}
 	}
 

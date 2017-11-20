@@ -39,73 +39,40 @@ public class NextLevel : MonoBehaviour {
 	{
         // ** Change levels  **
 
-        //ChangeLevel ();
-        //PlayerPrefs.SetInt ("Lv1Done", 1);
         Application.LoadLevel ("KitchenOverWorld");
-		//int Lv1Done = PlayerPrefs.GetInt("Lv1Done");
 		int LvDone = PlayerPrefs.GetInt ("LvDone");
         string scene = SceneManager.GetActiveScene().name;
 		switch (LvDone) {
 		case 0:
-			//PlayerPrefs.SetInt ("Lv1Done", 1);
 			PlayerPrefs.SetInt ("LvDone", 1);
 			break;
 		case 1:
-			//PlayerPrefs.SetInt ("Lv2Done", 2);
             if(scene == "level 2")
                 {
                     PlayerPrefs.SetInt ("LvDone", 2);
-			        int Lv2Done = PlayerPrefs.GetInt ("Lv2Done");
-			        Debug.Log ("SWITCH STATEMENT LV2DONE = " + Lv2Done);
                 }
 			
 			break;
 		case 2:
-			//PlayerPrefs.SetInt ("Lv3Done", 3);
             if(scene == "level 3 flying")
                 {
                     PlayerPrefs.SetInt ("LvDone", 3);
-			        int Lv3Done = PlayerPrefs.GetInt ("Lv3Done");
-			        Debug.Log ("SWITCH STATEMENT LV3DONE = " + Lv3Done);
                 }
 			
 			break;
 		case 3:
-			PlayerPrefs.SetInt ("LvDone", 4);
-			//PlayerPrefs.SetInt ("Lv4Done", 4);
+			if (scene == "Level 4 moving") 
+			{
+				PlayerPrefs.SetInt ("LvDone", 4);
+			}
 			break;
 		case 4:
-			PlayerPrefs.SetInt ("LvDone", 5);
+			if (scene == "Level 5") 
+			{
+				PlayerPrefs.SetInt ("LvDone", 5);
+			}
 			break;
 		}
-		//GameObject.Find ("GameController").GetComponent<SceneTransitionFade>().BeginFade (1);
-
 	}
-
-
-		//IEnumerator ChangeLevel ()
-		//{
-		//Debug.Log ("SCENE CHANGING ENUMERATOR!");
-		//float fadeTime = GameObject.Find ("GameController").GetComponent<SceneTransitionFade>().BeginFade (1);
-		//yield return new WaitForSeconds (fadeTime);
-		//Application.LoadLevel (4);
-		//}
-		//Debug.Log (Lv1Done);
-
-		//if (Lv1Done == 1 && Lv2Bool == false) 
-		//{
-		//	Lv2Bool = true;
-			//PlayerPrefs.SetInt ("Lv2Done", 2);
-		//	Application.LoadLevel ("KitchenOverWorld");
-			//PlayerPrefs.SetInt ("Lv2Done", 2);
-			//int LvTest1 = PlayerPrefs.GetInt("Lv1Done");
-			//Debug.Log (LvTest1);
-			//int LvTest2 = PlayerPrefs.GetInt ("Lv2Done");
-			//Debug.Log ("Next Level Early " + LvTest2);
-		//}
-		//if (Lv1Done == 2 && Lv2Bool == true) 
-		//{
-			//PlayerPrefs.SetInt ("Lv2Done", 2);
-		//}
-	}
+}
 
