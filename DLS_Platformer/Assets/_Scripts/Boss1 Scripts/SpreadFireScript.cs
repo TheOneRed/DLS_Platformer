@@ -26,11 +26,8 @@ public class SpreadFireScript : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll)
 	{
-		Debug.Log ("ENDER HITTING");
-		
 		if (coll.gameObject.tag == "PositiveShot" && singleFire == false) 
 		{
-			Debug.Log ("ender colliding with pos");
 			CreateSpread (-30f);
 			CreateSpread (-15f);
 			CreateSpread (0f);
@@ -63,7 +60,6 @@ public class SpreadFireScript : MonoBehaviour {
 		singleFire = true;
 		activateSpread = false;
 		Rigidbody2D rb = posFire.GetComponent<Rigidbody2D> ();
-		Debug.Log ("LITTLE GUYS MOVE!!!!");
 		rb.AddForce (Quaternion.AngleAxis (angle, Vector3.forward) * transform.right * 500.0f);
 	}
 }

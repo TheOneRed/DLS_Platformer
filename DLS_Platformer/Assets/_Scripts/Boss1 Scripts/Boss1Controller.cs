@@ -107,6 +107,10 @@ public class Boss1Controller : MonoBehaviour {
 			Destroy (coll.gameObject);
 			moveSpeed = 10;
 			//Instantiate (environmentDamager);
+			if (GameObject.Find ("Player").GetComponent<PlayerController2> ().singleDamager) 
+			{
+				GameObject.Find ("Player").GetComponent<PlayerController2> ().singleDamager = false;
+			}
 		}
 	}
 

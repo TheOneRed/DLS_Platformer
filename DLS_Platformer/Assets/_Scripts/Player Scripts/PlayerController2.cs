@@ -19,6 +19,7 @@ public class PlayerController2 : MonoBehaviour {
     public AudioClip jumpSound;
 	public Canvas healthCanvas;
 	public int currentLives;
+	public bool singleDamager = false;
 
     // ** Private variables **
 
@@ -221,13 +222,14 @@ public class PlayerController2 : MonoBehaviour {
 
         // ** Boss 1 button damage **
 
-        if (coll.gameObject.tag == "Button") 
+		if (coll.gameObject.tag == "Button" && singleDamager == false) 
 		{
 			if (SceneManager.GetActiveScene ().name == "BossBattle1") {
 				//environmentalDamager.gravityScale = 1;
 				//environmentDamager.GetComponent<Rigidbody2D>().gravityScale = 1;
 				environDamager.GetComponent<Rigidbody2D> ().gravityScale = 1;
 				environDamager = Instantiate (environmentDamager) as GameObject;
+				singleDamager = true;
 			}
 		}
 	}
