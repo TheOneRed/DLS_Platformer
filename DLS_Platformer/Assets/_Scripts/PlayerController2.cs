@@ -11,7 +11,6 @@ public class PlayerController2 : MonoBehaviour {
     public float speed = 50f;
 	public float jump = 200f;
 	public bool grounded = true;
-	public GameObject platforms;
 	public Text lives;
 	//public Rigidbody2D environmentalDamager;
 	public GameObject environmentDamager;
@@ -37,7 +36,9 @@ public class PlayerController2 : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		environDamager = Instantiate (environmentDamager) as GameObject;
+		if (SceneManager.GetActiveScene ().name == "BossBattle1") {
+			environDamager = Instantiate (environmentDamager) as GameObject;
+		}
 		//PlayerPrefs.SetInt ("currentLives", 3);
 		currentLives = PlayerPrefs.GetInt ("currentLives");
 		Debug.Log ("THIS IS CURRENTLIVES: " + currentLives);
@@ -222,11 +223,12 @@ public class PlayerController2 : MonoBehaviour {
 
         if (coll.gameObject.tag == "Button") 
 		{
-			
-			//environmentalDamager.gravityScale = 1;
-			//environmentDamager.GetComponent<Rigidbody2D>().gravityScale = 1;
-			environDamager.GetComponent<Rigidbody2D>().gravityScale = 1;
-			environDamager = Instantiate (environmentDamager) as GameObject;
+			if (SceneManager.GetActiveScene ().name == "BossBattle1") {
+				//environmentalDamager.gravityScale = 1;
+				//environmentDamager.GetComponent<Rigidbody2D>().gravityScale = 1;
+				environDamager.GetComponent<Rigidbody2D> ().gravityScale = 1;
+				environDamager = Instantiate (environmentDamager) as GameObject;
+			}
 		}
 	}
 
@@ -245,5 +247,28 @@ public class PlayerController2 : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D coll) {
+
+		if (coll.gameObject.tag == "Beam" && currentLives == 3) {
+			PlayerPrefs.SetInt ("currentLives", 2);
+			SoundManager.instance.PlaySingle (dmgSound);
+			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+		}
+		else if (coll.gameObject.tag == "Beam" && currentLives == 2) {
+			PlayerPrefs.SetInt ("currentLives", 1);
+			SoundManager.instance.PlaySingle (dmgSound);
+			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+		}
+		else if (coll.gameObject.tag == "Beam" && currentLives == 1) {
+			PlayerPrefs.SetInt ("currentLives", 0);
+			currentLives = PlayerPrefs.GetInt ("currentLives");
+			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+		}
+		else if (coll.gameObject.tag == "Beam" && currentLives == 0) {
+			PlayerPrefs.SetInt ("currentLives", 3);
+			Application.LoadLevel ("KitchenOverWorld");
+		}
+
 	}
+}
 
