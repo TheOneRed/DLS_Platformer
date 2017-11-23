@@ -15,10 +15,12 @@ public class movingplatform : MonoBehaviour {
 
 	public int selection;
 
-
+	private GameObject target = null;
+	private Vector3 offset;
 	// Use this for initialization
 	void Start () {
 		current = locations [selection];
+		target = null;
 	}
 	
 	// Update is called once per frame
@@ -36,5 +38,24 @@ public class movingplatform : MonoBehaviour {
 			}
 			current = locations [selection];
 		}
+	}
+
+	void LateUpdate()
+	{
+		if (target != null) 
+		{
+			target.transform.position = transform.position + offset;
+		}
+	}
+
+	void OnCollisionStay2D(Collision2D col)
+	{
+		target = col.gameObject;
+		offset = target.transform.position - transform.position;
+	}
+
+	void OnCollisionExit2D(Collision2D col)
+	{
+		target = null;
 	}
 }

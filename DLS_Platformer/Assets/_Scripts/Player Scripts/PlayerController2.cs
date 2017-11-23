@@ -20,7 +20,7 @@ public class PlayerController2 : MonoBehaviour {
 	public Canvas healthCanvas;
 	public int currentLives;
 	public bool singleDamager = false;
-
+	public GameObject environDamager;
     // ** Private variables **
 
     private ButtonController buttonController;
@@ -29,7 +29,8 @@ public class PlayerController2 : MonoBehaviour {
 	private Transform transform;
 	private float _movingValue = 0;
 	private bool facingRight = true;
-	private GameObject environDamager;
+	private GameObject target = null;
+	private Vector3 offset;
 
 	void awake()
 	{
@@ -61,7 +62,8 @@ public class PlayerController2 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		Vector3 scale = new Vector3 (3, 3, 1);
+		transform.localScale = scale;
 	}
 
 	void FixedUpdate() {
@@ -151,6 +153,14 @@ public class PlayerController2 : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionStay2D(Collision2D coll)
+	{
+		if (coll.transform.tag == "MovingPlatform" || coll.gameObject.tag == "RotatingPlatform") 
+		{
+			//transform.position = coll.transform.position;
+		}
+	}
+
 	void OnCollisionEnter2D(Collision2D coll)
 	{
         // ** Boss battle button **
@@ -171,7 +181,12 @@ public class PlayerController2 : MonoBehaviour {
 
         if (coll.transform.tag == "MovingPlatform" || coll.gameObject.tag == "RotatingPlatform") 
 		{
-			transform.parent = coll.transform;
+			//transform.position = coll.transform.position;
+			//transform.rotation = coll.transform.rotation;
+			//transform.parent = coll.transform;
+			//Vector3 scale = new Vector3 (3, 17, 1);
+			//transform.localScale = scale;
+
 		}
 
         // ** Taking damage from enemies and hazards **
@@ -229,6 +244,7 @@ public class PlayerController2 : MonoBehaviour {
 				//environmentDamager.GetComponent<Rigidbody2D>().gravityScale = 1;
 				environDamager.GetComponent<Rigidbody2D> ().gravityScale = 1;
 				environDamager = Instantiate (environmentDamager) as GameObject;
+				environDamager.SetActive (false);
 				singleDamager = true;
 			}
 		}
@@ -245,7 +261,7 @@ public class PlayerController2 : MonoBehaviour {
 		} 
 		if(coll.transform.tag == "MovingPlatform" || coll.gameObject.tag == "RotatingPlatform")
 		{
-			transform.parent = null;
+			//transform.parent = null;
 		}
 	}
 

@@ -107,10 +107,12 @@ public class Boss1Controller : MonoBehaviour {
 			Destroy (coll.gameObject);
 			moveSpeed = 10;
 			//Instantiate (environmentDamager);
-			if (GameObject.Find ("Player").GetComponent<PlayerController2> ().singleDamager) 
-			{
-				GameObject.Find ("Player").GetComponent<PlayerController2> ().singleDamager = false;
-			}
+			//if (GameObject.Find ("Player").GetComponent<PlayerController2> ().singleDamager) 
+			//{
+			GameObject.Find ("Player").GetComponent<PlayerController2> ().environDamager.SetActive(true);
+			//}
+			//Invoke("ReactivateDamagerBool", 0.5f);
+			GameObject.Find ("ButtonController").GetComponent<ButtonController> ().current.SetActive(true);
 		}
 	}
 
@@ -118,5 +120,13 @@ public class Boss1Controller : MonoBehaviour {
 	{
 		singleFire = true;
 	}
+
+	//void ReactivateDamagerBool()
+	//{
+	//	if (GameObject.Find ("Player").GetComponent<PlayerController2> ().singleDamager) 
+	//	{
+	//		GameObject.Find ("Player").GetComponent<PlayerController2> ().singleDamager = false;
+	//	}
+	//}
 
 }
