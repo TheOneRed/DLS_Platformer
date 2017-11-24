@@ -11,8 +11,6 @@ public class Boss1Controller : MonoBehaviour {
 	public GameObject positiveFire;
 	public GameObject laserFire;
 	public GameObject environmentDamager;
-	//public GameObject fireSprite;
-	//GameObject fireSprite;
 
 	public float moveSpeed;
 	public Transform current;
@@ -33,14 +31,9 @@ public class Boss1Controller : MonoBehaviour {
 	private bool iSeeYou = false;
 	private float fire= 0.0f;
 
-	//public Transform[] locations;
-
-	//public int selection;
 
 	// Use this for initialization
 	void Start () {
-
-		//current = locations [selection];
 		
 	}
 	
@@ -70,25 +63,22 @@ public class Boss1Controller : MonoBehaviour {
 		this.iSeeYou = Physics2D.Linecast(this.visionStart.position, this.visionEnd.position, 1 << LayerMask.NameToLayer("Player"));
 		Debug.DrawLine(this.visionStart.position, this.visionEnd.position);
 
-		if (iSeeYou = true) {
+		if (iSeeYou == true) {
 
 			if (singleFire == true && phase2 == true && Time.time > fire) {
 				fire = Time.time + delay;
-				GameObject laseFire = Instantiate (laserFire, FirePosition.transform.position, FirePosition.rotation);
-				//laserFire.transform = new Vector3 (this.FirePosition);
+				Instantiate (laserFire, FirePosition.transform.position, FirePosition.rotation);
 			}
 
 			else if (negative == true && Time.time > fire) {
 				fire = Time.time + delay;
-				GameObject negFire = Instantiate (negativeFire, FirePosition.position, FirePosition.rotation);
-				//laserFire.transform = new Vector3 (this.FirePosition);
+				Instantiate (negativeFire, FirePosition.position, FirePosition.rotation);
 				singleFire = false;
 				negative = false;
 				positive = true;
 			} else if (positive == true && Time.time > fire) {
 				fire = Time.time + delay;
-				GameObject negFire = Instantiate (positiveFire, FirePosition.position, FirePosition.rotation);
-				//laserFire.transform = new Vector3 (this.FirePosition);
+				Instantiate (positiveFire, FirePosition.position, FirePosition.rotation);
 				singleFire = false;
 				positive = false;
 				negative = true;
@@ -106,12 +96,9 @@ public class Boss1Controller : MonoBehaviour {
 			phase2 = true;
 			Destroy (coll.gameObject);
 			moveSpeed = 10;
-			//Instantiate (environmentDamager);
-			//if (GameObject.Find ("Player").GetComponent<PlayerController2> ().singleDamager) 
-			//{
+		
 			GameObject.Find ("Player").GetComponent<PlayerController2> ().environDamager.SetActive(true);
-			//}
-			//Invoke("ReactivateDamagerBool", 0.5f);
+
 			GameObject.Find ("ButtonController").GetComponent<ButtonController> ().current.SetActive(true);
 		}
 	}
@@ -120,13 +107,5 @@ public class Boss1Controller : MonoBehaviour {
 	{
 		singleFire = true;
 	}
-
-	//void ReactivateDamagerBool()
-	//{
-	//	if (GameObject.Find ("Player").GetComponent<PlayerController2> ().singleDamager) 
-	//	{
-	//		GameObject.Find ("Player").GetComponent<PlayerController2> ().singleDamager = false;
-	//	}
-	//}
 
 }

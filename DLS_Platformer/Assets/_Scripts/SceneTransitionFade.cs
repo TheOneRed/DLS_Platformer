@@ -25,7 +25,7 @@ public class SceneTransitionFade : MonoBehaviour {
 
 	public float BeginFade (int direction)
 	{
-		Debug.Log ("BEGIN FADE HAPPENING");
+		//Debug.Log ("BEGIN FADE HAPPENING");
 		fadeDir = direction;
 		return (fadeSpeed);
 	}

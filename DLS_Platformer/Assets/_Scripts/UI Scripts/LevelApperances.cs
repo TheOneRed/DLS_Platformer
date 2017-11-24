@@ -11,19 +11,12 @@ public class LevelApperances : MonoBehaviour {
 
 	void Awake () 
 	{
-		//Lv2 ();
+
 	}
 
 	void Start()
 	{
 		PlayerPrefs.SetInt ("LvDone", 0);
-		//PlayerPrefs.SetInt ("Lv2Done", 0);
-		//PlayerPrefs.SetInt ("Lv3Done", 0);
-		//PlayerPrefs.SetInt ("Lv4Done", 0);
-		int Lv1Done1 = PlayerPrefs.GetInt("Lv1Done");
-		int Lv1Done2 = PlayerPrefs.GetInt("Lv2Done");
-		Debug.Log("Lv1 save should be 0, " + Lv1Done1);
-		Debug.Log("Lv2 save should be 0, " + Lv1Done2);
 	}
 
 	public void Lv2()
@@ -40,10 +33,7 @@ public class LevelApperances : MonoBehaviour {
 			canvas.transform.position = new Vector2 (85f, -23f);
 			Lv2Button.transform.SetParent (canvas.transform);
 
-			GameObject Lv2Location = Instantiate (lv2Location) as GameObject;
-			//Lv2Location.transform.position = new Vector2 (7f, -3f);
-
-			Debug.Log (Lv1Done);
+			Instantiate (lv2Location);
 		}
 	}
 }

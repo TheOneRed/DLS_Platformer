@@ -8,7 +8,6 @@ public class NextLevel : MonoBehaviour {
     // ** Public Variables **
 
     public AudioSource winSound;
-	bool Lv2Bool = false;
 
 	public string sceneToLoad;
 	public Color loadToColour = Color.black;
@@ -39,7 +38,7 @@ public class NextLevel : MonoBehaviour {
 	{
         // ** Change levels  **
 
-        Application.LoadLevel ("KitchenOverWorld");
+		SceneManager.LoadScene ("KitchenOverWorld");
 		int LvDone = PlayerPrefs.GetInt ("LvDone");
         string scene = SceneManager.GetActiveScene().name;
 		switch (LvDone) {
@@ -47,7 +46,7 @@ public class NextLevel : MonoBehaviour {
 			PlayerPrefs.SetInt ("LvDone", 1);
 			break;
 		case 1:
-            if(scene == "level 2")
+            if(scene == "Level 2")
                 {
                     PlayerPrefs.SetInt ("LvDone", 2);
                 }
