@@ -21,6 +21,9 @@ public class PlayerController2 : MonoBehaviour {
 	public int currentLives;
 	public bool singleDamager = false;
 	public GameObject environDamager;
+	public AudioSource[] sounds;
+	public AudioSource hitSounds;
+	public AudioSource backgroundSounds;
 
     // ** Private variables **
 
@@ -57,11 +60,16 @@ public class PlayerController2 : MonoBehaviour {
 			buttonController = buttonControllerObject.GetComponent<ButtonController>();
 		}
 
+		GameObject audioControllerObject = GameObject.FindWithTag("SoundManager");
+		sounds = audioControllerObject.GetComponents<AudioSource> ();
+		hitSounds = sounds[0];
+		backgroundSounds = sounds[1];
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		currentLives = PlayerPrefs.GetInt ("currentLives");
+		lives.text = currentLives.ToString ();
 	}
 
 	void FixedUpdate() {
@@ -165,29 +173,32 @@ public class PlayerController2 : MonoBehaviour {
 
         // ** Taking damage from enemies and hazards **
 
-		if (coll.gameObject.tag == "Spike" && currentLives == 3 || coll.gameObject.tag == "Enemy" && currentLives == 3) 
+		if (coll.gameObject.tag == "Spike" && currentLives == 3 || coll.gameObject.tag == "Enemy" && currentLives == 3 || coll.gameObject.tag == "Destroyplayer" && currentLives == 3) 
 		{
 			PlayerPrefs.SetInt ("currentLives", 2);
 
 			SoundManager.instance.PlaySingle (dmgSound);
 			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 		} 
-		else if (coll.gameObject.tag == "Spike" && currentLives == 2 || coll.gameObject.tag == "Enemy" && currentLives == 2) 
+		else if (coll.gameObject.tag == "Spike" && currentLives == 2 || coll.gameObject.tag == "Enemy" && currentLives == 2 || coll.gameObject.tag == "Destroyplayer" && currentLives == 2) 
 		{
 			PlayerPrefs.SetInt ("currentLives", 1);
 			currentLives = PlayerPrefs.GetInt ("currentLives");
 			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 		} 
-		else if (coll.gameObject.tag == "Spike" && currentLives == 1 || coll.gameObject.tag == "Enemy" && currentLives == 1) 
+		else if (coll.gameObject.tag == "Spike" && currentLives == 1 || coll.gameObject.tag == "Enemy" && currentLives == 1 || coll.gameObject.tag == "Destroyplayer" && currentLives == 1) 
 		{
 			PlayerPrefs.SetInt ("currentLives", 0);
 			currentLives = PlayerPrefs.GetInt ("currentLives");
 			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 		} 
-		else if (coll.gameObject.tag == "Spike" && currentLives == 0 || coll.gameObject.tag == "Enemy" && currentLives == 0) 
+		else if (coll.gameObject.tag == "Spike" && currentLives == 0 || coll.gameObject.tag == "Enemy" && currentLives == 0 || coll.gameObject.tag == "Destroyplayer" && currentLives == 0) 
 		{
 			PlayerPrefs.SetInt ("currentLives", 3);
 			SceneManager.LoadScene ("KitchenOverWorld");
+			backgroundSounds.Stop ();
+			//GameObject audioControllerObject = GameObject.FindWithTag("SoundManager");
+			//audioControllerObject.GetComponent<AudioSource> ().Stop ();
 		}
 			
 

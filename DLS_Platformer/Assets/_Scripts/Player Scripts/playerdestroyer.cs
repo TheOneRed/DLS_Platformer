@@ -17,13 +17,13 @@ public class playerdestroyer : MonoBehaviour {
 		
 	}
 	//reloads the scene upon collision with the player.
-	void OnTriggerEnter2D(Collider2D otherCollider){
+	void OnCollisionEnter2D(Collision2D otherCollider){
 
         // ** Destroy the player if he falls **
 
         if (otherCollider.gameObject.CompareTag("Player")){
             SoundManager.instance.PlaySingle(deathSound);
-			SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+			//SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 		}
 
 	}
