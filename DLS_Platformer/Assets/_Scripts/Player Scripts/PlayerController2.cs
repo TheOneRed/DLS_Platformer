@@ -131,11 +131,11 @@ public class PlayerController2 : MonoBehaviour {
             // ** Player can jump through platforms **
             if (grounded == false && this.GetComponent<Rigidbody2D>().velocity.y > 0)
             {
-                this.GetComponent<PolygonCollider2D>().enabled = false;
+                this.GetComponent<BoxCollider2D>().enabled = false;
             }
             if (this.GetComponent<Rigidbody2D>().velocity.y < 0)
             {
-				this.GetComponent<PolygonCollider2D>().enabled = true;
+				this.GetComponent<BoxCollider2D>().enabled = true;
             }
         }
 

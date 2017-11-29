@@ -17,6 +17,7 @@ public class movingplatform : MonoBehaviour {
 
 	private GameObject target = null;
 	private Vector3 offset;
+
 	// Use this for initialization
 	void Start () {
 		current = locations [selection];
