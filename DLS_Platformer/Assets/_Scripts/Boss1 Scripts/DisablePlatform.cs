@@ -25,6 +25,7 @@ public class DisablePlatform : MonoBehaviour {
 		if (coll.gameObject.tag == "NegativeShot") {
 			closePlatform = FindClosestPlatform ();
 			closePlatform.SetActive (false);
+			Destroy (coll);
 			Invoke ("ReactivateDisabledPlatform", 2.5f);
 		}
 	}
