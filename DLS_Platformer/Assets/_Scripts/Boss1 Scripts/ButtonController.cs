@@ -33,7 +33,7 @@ public class ButtonController : MonoBehaviour {
 
 		int index = Random.Range (0, buttons.Length);
 		current = buttons [index];
-		//current.SetActive (true);
+		current.SetActive (true);
 
 		Invoke ("ReactivateDamagerBool", 0.5f);
 

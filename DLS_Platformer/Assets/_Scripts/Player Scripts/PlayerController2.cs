@@ -202,17 +202,6 @@ public class PlayerController2 : MonoBehaviour {
 		}
 			
 
-        // ** Boss 1 button damage **
-
-		if (coll.gameObject.tag == "Button" && singleDamager == false) 
-		{
-			if (SceneManager.GetActiveScene ().name == "BossBattle1") {
-				environDamager.GetComponent<Rigidbody2D> ().gravityScale = 1;
-				environDamager = Instantiate (environmentDamager) as GameObject;
-				environDamager.SetActive (false);
-				singleDamager = true;
-			}
-		}
 	}
 
 	void OnCollisionExit2D(Collision2D coll)
@@ -248,6 +237,22 @@ public class PlayerController2 : MonoBehaviour {
 			SceneManager.LoadScene ("KitchenOverWorld");
 		}
 
+	}
+
+	void OnTriggerExit2D(Collider2D coll) {
+
+		// ** Boss 1 button damage **
+
+		if (coll.gameObject.tag == "Button" && singleDamager == false) 
+		{
+			if (SceneManager.GetActiveScene ().name == "BossBattle1") {
+				
+				environDamager.GetComponent<Rigidbody2D> ().gravityScale = 1;
+				environDamager = Instantiate (environmentDamager) as GameObject;
+				environDamager.SetActive (false);
+				singleDamager = true;
+			}
+		}
 	}
 }
 
