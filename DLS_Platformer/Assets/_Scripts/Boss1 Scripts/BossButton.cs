@@ -33,7 +33,7 @@ public class BossButton : MonoBehaviour {
 			this.animator.SetInteger ("State", 1);
 			Invoke ("Delay", 5);
 		}
-
+			
 
 	}
 

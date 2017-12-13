@@ -55,9 +55,11 @@ public class DisablePlatform : MonoBehaviour {
 		}
 		return closestPlatform;
 	}
+		
 
 	public void ReactivateDisabledPlatform()
 	{
 		closePlatform.SetActive (true);
 	}
+		
 }
