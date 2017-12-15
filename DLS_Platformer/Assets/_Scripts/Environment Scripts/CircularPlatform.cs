@@ -39,7 +39,7 @@ public class CircularPlatform : MonoBehaviour {
 
         // ** Rotate platforms **
 
-        this.transform.RotateAround (centerOrbit.transform.position, Vector3.forward, speed);
+		this.transform.RotateAround (centerOrbit.transform.position, Vector3.forward * Time.deltaTime, speed);
 		transform.rotation = Quaternion.Euler(lockPlatform, lockPlatform, lockPlatform);
 //		if (platform.transform.position == current.position) 
 //		{
