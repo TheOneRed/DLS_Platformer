@@ -8,6 +8,8 @@ public class DisablePlatform : MonoBehaviour {
 
 	private GameObject[] platforms;
 	private GameObject closePlatform;
+	public GameObject brokenPlatform;
+	public GameObject brokePlatform;
 
 	// Use this for initialization
 	void Start () {
@@ -25,8 +27,11 @@ public class DisablePlatform : MonoBehaviour {
 		if (coll.gameObject.tag == "NegativeShot") {
 			closePlatform = FindClosestPlatform ();
 			closePlatform.SetActive (false);
-			Destroy (coll);
-			Invoke ("ReactivateDisabledPlatform", 2.5f);
+			brokePlatform = Instantiate (brokenPlatform) as GameObject;
+			brokePlatform.transform.localPosition = closePlatform.transform.position;
+			Invoke ("DestroyBrokenPlatform", 1.5f);
+			//Destroy (coll);
+			Invoke ("ReactivateDisabledPlatform", 3.0f);
 		}
 	}
 
@@ -60,6 +65,11 @@ public class DisablePlatform : MonoBehaviour {
 	public void ReactivateDisabledPlatform()
 	{
 		closePlatform.SetActive (true);
+	}
+
+	public void DestroyBrokenPlatform()
+	{
+		Destroy (brokePlatform);
 	}
 		
 }

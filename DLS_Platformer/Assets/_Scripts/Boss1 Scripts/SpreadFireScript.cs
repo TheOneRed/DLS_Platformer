@@ -53,11 +53,11 @@ public class SpreadFireScript : MonoBehaviour {
 
 		// ** Destroy the beam **
 
-		if (coll.gameObject.tag == "Beam") 
-		{
-			Destroy (coll.gameObject);
+		//if (coll.gameObject.tag == "Beam" || coll.gameObject.tag == "NegativeShot" || coll.gameObject.tag == "PositiveSmallShot") 
+		//{
+		//	Destroy (coll.gameObject);
 
-		}
+		//}
 	}
 
 	void OnTriggerExit2D(Collider2D coll)
@@ -65,8 +65,11 @@ public class SpreadFireScript : MonoBehaviour {
 		if (coll.gameObject.tag == "PositiveShot") 
 		{
 			singleFire = false;
+			//Destroy (coll.gameObject);
 
 		}
+
+		Destroy (coll.gameObject);
 	}
 
 	void CreateSpread(float angle)

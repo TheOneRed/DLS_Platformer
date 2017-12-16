@@ -1,9 +1,25 @@
 fileFormatVersion: 2
 guid: a6d696160a4d8984aae26c9f9f094dcb
-timeCreated: 1513303435
+timeCreated: 1513392815
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: BossDestroyedPlatform_0
+    21300002: BossDestroyedPlatform_1
+    21300004: BossDestroyedPlatform_2
+    21300006: BossDestroyedPlatform_3
+    21300008: BossDestroyedPlatform_4
+    21300010: BossDestroyedPlatform_5
+    21300012: BossDestroyedPlatform_6
+    21300014: BossDestroyedPlatform_7
+    21300016: BossDestroyedPlatform_8
+    21300018: BossDestroyedPlatform_9
+    21300020: BossDestroyedPlatform_10
+    21300022: BossDestroyedPlatform_11
+    21300024: BossDestroyedPlatform_12
+    21300026: BossDestroyedPlatform_13
+    21300028: BossDestroyedPlatform_14
+    21300030: BossDestroyedPlatform_15
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -40,7 +56,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -65,9 +81,269 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: BossDestroyedPlatform_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1361
+        width: 413
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BossDestroyedPlatform_1
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 1363
+        width: 413
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BossDestroyedPlatform_2
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 1373
+        width: 412
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BossDestroyedPlatform_3
+      rect:
+        serializedVersion: 2
+        x: 1246
+        y: 1372
+        width: 414
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BossDestroyedPlatform_4
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 952
+        width: 408
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BossDestroyedPlatform_5
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 950
+        width: 418
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BossDestroyedPlatform_6
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 956
+        width: 411
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BossDestroyedPlatform_7
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 956
+        width: 410
+        height: 198
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BossDestroyedPlatform_8
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 537
+        width: 412
+        height: 198
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BossDestroyedPlatform_9
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 539
+        width: 415
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BossDestroyedPlatform_10
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 535
+        width: 406
+        height: 198
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BossDestroyedPlatform_11
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 517
+        width: 416
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BossDestroyedPlatform_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 99
+        width: 425
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BossDestroyedPlatform_13
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 100
+        width: 410
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BossDestroyedPlatform_14
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 103
+        width: 408
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BossDestroyedPlatform_15
+      rect:
+        serializedVersion: 2
+        x: 1257
+        y: 100
+        width: 407
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
