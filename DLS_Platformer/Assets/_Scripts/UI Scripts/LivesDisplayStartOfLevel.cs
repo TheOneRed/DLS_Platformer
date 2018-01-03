@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LivesDisplayStartOfLevel : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class LivesDisplayStartOfLevel : MonoBehaviour {
 	public GameObject LivesUI;
 	public GameObject LivesLvStartUI;
 	public bool isScene = true;
+	public Text electrifyText; 
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +29,7 @@ public class LivesDisplayStartOfLevel : MonoBehaviour {
 		//if (LivesLvStartUI.activeInHierarchy == true) 
 			if(isScene == true)
 		{
-			Debug.Log ("TimeScale should be 0");
+			
 			Time.timeScale = 0f;
 		} 
 		//if(LivesLvStartUI.activeInHierarchy == false)
@@ -43,6 +45,11 @@ public class LivesDisplayStartOfLevel : MonoBehaviour {
 		LivesUI.SetActive (true);
 		Time.timeScale = 0f;
 		isScene = false;
-		Debug.Log("TimeScale should be 1");
+		Invoke ("DeactivateElectrifyText", 2.5f);
+	}
+
+	void DeactivateElectrifyText()
+	{
+		electrifyText.enabled = false;
 	}
 }

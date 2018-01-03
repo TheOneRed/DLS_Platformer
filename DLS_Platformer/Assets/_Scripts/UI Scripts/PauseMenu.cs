@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour {
 	
@@ -15,6 +16,8 @@ public class PauseMenu : MonoBehaviour {
 	public GameObject LivesLvStartUI;
 	public GameObject player;
 	public GameObject enemy;
+
+	public Text electrifyText;
 
 	public bool isScene = true;
 
@@ -48,7 +51,7 @@ public class PauseMenu : MonoBehaviour {
 		if (LivesLvStartUI.activeInHierarchy == true) 
 		//if(isScene == true)
 		{
-			Debug.Log ("TimeScale should be 0");
+			//Debug.Log ("TimeScale should be 0");
 			//Time.timeScale = 0f;
 
 		} 
@@ -78,9 +81,15 @@ public class PauseMenu : MonoBehaviour {
 		LivesUI.SetActive (true);
 		player.SetActive (true);
 		enemy.SetActive (true);
+		Invoke ("DeactivateElectrifyText", 1.5f);
 		//Time.timeScale = 1f;
 		isScene = false;
-		Debug.Log("TimeScale should be 1");
+		//Debug.Log("TimeScale should be 1");
+	}
+
+	void DeactivateElectrifyText()
+	{
+		electrifyText.enabled = false;
 	}
 
 	IEnumerator Example()
@@ -88,8 +97,9 @@ public class PauseMenu : MonoBehaviour {
 		yield return new WaitForSeconds (5.0f);
 		LivesLvStartUI.SetActive (false);
 		LivesUI.SetActive (true);
+		Invoke ("DeactivateElectrifyText", 2.5f);
 		//Time.timeScale = 1f;
 		//isScene = false;
-		Debug.Log("TimeScale should be 1");
+		//Debug.Log("TimeScale should be 1");
 	}
 }
