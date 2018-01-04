@@ -5,36 +5,31 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour {
+
+	//PUBLIC VARIABLES
 	
 	public string mainMenu;
-
 	public bool isPaused;
-
 	public GameObject pauseMenu;
-
 	public GameObject LivesUI;
 	public GameObject LivesLvStartUI;
 	public GameObject player;
 	public GameObject enemy;
 	public GameObject panCamera;
-
-	//public Text electrifyText;
-
 	public bool isScene = true;
 
 	void Start () {
-		//if (SceneManager.GetActiveScene ().name == "BossBattle1" || SceneManager.GetActiveScene ().name == "Level 3 flying") 
+		 
 		if (isScene == true)
 		{
 			LivesUI.SetActive (false);
 			LivesLvStartUI.SetActive (true);
 			player.SetActive (false);
 			enemy.SetActive (false);
-			//Time.timeScale = 0f;
 			Invoke ("DeactivateLivesLvStartUI", 5.0f);
-			//StartCoroutine(Example());
 		}
 	}
+
 	// Update is called once per frame
 	void Update () {
 		if (isPaused) {
@@ -79,29 +74,15 @@ public class PauseMenu : MonoBehaviour {
 	void DeactivateLivesLvStartUI()
 	{
 		LivesLvStartUI.SetActive (false);
-		//LivesUI.SetActive (true);
-		//player.SetActive (true);
-		//enemy.SetActive (true);
-		//Invoke ("DeactivateElectrifyText", 1.5f);
 		panCamera.SetActive (true);
-		//Time.timeScale = 1f;
 		isScene = false;
-		//Debug.Log("TimeScale should be 1");
 	}
-
-	//void DeactivateElectrifyText()
-	//{
-	//	electrifyText.enabled = false;
-	//}
+		
 
 	IEnumerator Example()
 	{
 		yield return new WaitForSeconds (5.0f);
 		LivesLvStartUI.SetActive (false);
-		//LivesUI.SetActive (true);
 		Invoke ("DeactivateElectrifyText", 2.5f);
-		//Time.timeScale = 1f;
-		//isScene = false;
-		//Debug.Log("TimeScale should be 1");
 	}
 }
