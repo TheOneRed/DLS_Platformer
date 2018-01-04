@@ -16,8 +16,9 @@ public class PauseMenu : MonoBehaviour {
 	public GameObject LivesLvStartUI;
 	public GameObject player;
 	public GameObject enemy;
+	public GameObject panCamera;
 
-	public Text electrifyText;
+	//public Text electrifyText;
 
 	public bool isScene = true;
 
@@ -78,25 +79,26 @@ public class PauseMenu : MonoBehaviour {
 	void DeactivateLivesLvStartUI()
 	{
 		LivesLvStartUI.SetActive (false);
-		LivesUI.SetActive (true);
-		player.SetActive (true);
-		enemy.SetActive (true);
-		Invoke ("DeactivateElectrifyText", 1.5f);
+		//LivesUI.SetActive (true);
+		//player.SetActive (true);
+		//enemy.SetActive (true);
+		//Invoke ("DeactivateElectrifyText", 1.5f);
+		panCamera.SetActive (true);
 		//Time.timeScale = 1f;
 		isScene = false;
 		//Debug.Log("TimeScale should be 1");
 	}
 
-	void DeactivateElectrifyText()
-	{
-		electrifyText.enabled = false;
-	}
+	//void DeactivateElectrifyText()
+	//{
+	//	electrifyText.enabled = false;
+	//}
 
 	IEnumerator Example()
 	{
 		yield return new WaitForSeconds (5.0f);
 		LivesLvStartUI.SetActive (false);
-		LivesUI.SetActive (true);
+		//LivesUI.SetActive (true);
 		Invoke ("DeactivateElectrifyText", 2.5f);
 		//Time.timeScale = 1f;
 		//isScene = false;
