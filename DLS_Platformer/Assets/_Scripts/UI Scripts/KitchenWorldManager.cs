@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class KitchenWorldManager : MonoBehaviour {
 
@@ -28,6 +29,8 @@ public class KitchenWorldManager : MonoBehaviour {
 
 	public Text lives;
 	public int currentLives;
+
+	public GameObject playerSprite;
 
 
 	// Use this for initialization
@@ -144,5 +147,18 @@ public class KitchenWorldManager : MonoBehaviour {
 			Lv6Button.transform.SetParent (canvas.transform);
 			Lv6Button.transform.localPosition = new Vector3 (212f, -251, 385);
 		}
+	}
+
+	public void OnPointerEnter(PointerEventData eventData)
+	{
+		GameObject playSprite = Instantiate (playerSprite) as GameObject;
+		playSprite.transform.localPosition = lv1Button.transform.position;
+	}
+
+	public void PlayerSprite()
+	{
+		Debug.Log ("SPRITE APPEAR WHERE?");
+		GameObject playSprite = Instantiate (playerSprite) as GameObject;
+		playSprite.transform.localPosition = new Vector3 (-435f, -291, 385);
 	}
 }
