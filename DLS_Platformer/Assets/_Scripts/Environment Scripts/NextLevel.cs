@@ -12,6 +12,8 @@ public class NextLevel : MonoBehaviour {
 	public string sceneToLoad;
 	public Color loadToColour = Color.black;
 
+	public Texture2D fadeOutTexture;
+
 	// Use this for initialization
 	void Start () {
 		winSound = GetComponent<AudioSource> ();
@@ -34,11 +36,19 @@ public class NextLevel : MonoBehaviour {
 		}
 	}
 
+	//void OnGUI()
+	//{
+	//	GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), fadeOutTexture);
+	//}
+
 	public void GoToNextLevel()
 	{
         // ** Change levels  **
-
-		SceneManager.LoadScene ("KitchenOverWorld");
+		//GameObject.FindWithTag ("GameController").SetActive(true);
+		//float fadeTime = GameObject.Find ("GameController").GetComponent<SceneTransitionFade> ().BeginFade (1);
+		//GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), fadeOutTexture);
+		//Invoke("LevelTransition", 1.0f);
+		//SceneManager.LoadScene ("KitchenOverWorld");
 		int LvDone = PlayerPrefs.GetInt ("LvDone");
         string scene = SceneManager.GetActiveScene().name;
 		switch (LvDone) {
@@ -73,5 +83,11 @@ public class NextLevel : MonoBehaviour {
 			break;
 		}
 	}
+
+	//public void LevelTransition()
+	//{
+		//float fadeTime = GameObject.Find ("GameController").GetComponent<SceneTransitionFade> ().BeginFade (1);
+	//	SceneManager.LoadScene ("KitchenOverWorld");
+	//}
 }
 

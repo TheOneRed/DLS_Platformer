@@ -23,8 +23,10 @@ public class PauseMenu : MonoBehaviour {
 		if (isScene == true)
 		{
 			LivesUI.SetActive (false);
+
 			LivesLvStartUI.SetActive (true);
 			player.SetActive (false);
+
 			enemy.SetActive (false);
 			Invoke ("DeactivateLivesLvStartUI", 5.0f);
 		}

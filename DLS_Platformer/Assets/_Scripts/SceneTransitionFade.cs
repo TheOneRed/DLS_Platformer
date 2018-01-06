@@ -30,9 +30,9 @@ public class SceneTransitionFade : MonoBehaviour {
 		return (fadeSpeed);
 	}
 
-	//void OnLevelWasLoaded()
-	//{
-		//alpha = 1;
-	//	BeginFade (-1);
-	//}
+	void OnLevelWasLoaded()
+	{
+		alpha = 1;
+		BeginFade (-1);
+	}
 }
