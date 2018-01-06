@@ -10,6 +10,7 @@ public class LoadLv1 : MonoBehaviour {
 	private AudioSource backgroundSounds;
 
 	public GameObject playerSprite;
+	public GameObject playSprite;
 
 	// Use this for initialization
 	void Start () {
@@ -35,11 +36,26 @@ public class LoadLv1 : MonoBehaviour {
 		}
 	}
 
-	public void PlayerSprite()
+	public void PlayerSpriteLv1()
 	{
 		Debug.Log ("SPRITE APPEAR WHERE?");
 		playerSprite = GameObject.FindGameObjectWithTag ("PlayerSprite");
-		GameObject playSprite = Instantiate (playerSprite) as GameObject;
+		playSprite = Instantiate (playerSprite) as GameObject;
 		playSprite.transform.localPosition = new Vector3 (-3f, -1, 0);
+
+	}
+
+	public void PlayerSpriteLv2()
+	{
+		Debug.Log ("SPRITE APPEAR WHERE?");
+		playerSprite = GameObject.FindGameObjectWithTag ("PlayerSprite");
+		playSprite = Instantiate (playerSprite) as GameObject;
+		playSprite.transform.localPosition = new Vector3 (-3f, 1, 0);
+
+	}
+
+	public void PlayerSpriteDestroy()
+	{
+		Destroy (playSprite);
 	}
 }

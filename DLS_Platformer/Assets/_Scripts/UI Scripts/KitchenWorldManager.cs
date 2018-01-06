@@ -30,7 +30,8 @@ public class KitchenWorldManager : MonoBehaviour {
 	public Text lives;
 	public int currentLives;
 
-	public GameObject playerSprite;
+	//public GameObject playerSprite;
+	//public GameObject playSprite;
 
 
 	// Use this for initialization
@@ -149,16 +150,29 @@ public class KitchenWorldManager : MonoBehaviour {
 		}
 	}
 
-	public void OnPointerEnter(PointerEventData eventData)
-	{
-		GameObject playSprite = Instantiate (playerSprite) as GameObject;
-		playSprite.transform.localPosition = lv1Button.transform.position;
-	}
-
-	public void PlayerSprite()
-	{
-		Debug.Log ("SPRITE APPEAR WHERE?");
-		GameObject playSprite = Instantiate (playerSprite) as GameObject;
-		playSprite.transform.localPosition = new Vector3 (-435f, -291, 385);
-	}
+//	public void OnPointerEnter(PointerEventData eventData)
+//	{
+//		GameObject playSprite = Instantiate (playerSprite) as GameObject;
+//		playSprite.transform.localPosition = lv1Button.transform.position;
+//	}
+//
+//	public void PlayerSprite()
+//	{
+//		Debug.Log ("SPRITE APPEAR WHERE?");
+//		playSprite = Instantiate (playerSprite) as GameObject;
+//		playSprite.transform.localPosition = new Vector3 (-435f, -291, 385);
+//	}
+//
+//	public void PlayerSpriteDestroy()
+//	{
+//		Destroy (playSprite);
+//	}
+//
+//	public void OnPointerExit(PointerEventData eventData)
+//	{
+//		Destroy (playSprite);
+//		//GameObject playSprite = Instantiate (playerSprite) as GameObject;
+//		//playSprite.transform.localPosition = lv1Button.transform.position;
+//		//player
+//	}
 }
