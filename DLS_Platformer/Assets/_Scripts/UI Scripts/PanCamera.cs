@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PanCamera : MonoBehaviour {
 
@@ -13,6 +14,9 @@ public class PanCamera : MonoBehaviour {
 	public GameObject panCheckpoint2;
 	public Text electrifyText;
 	public GameObject LivesUI;
+	public bool alreadyPanned = false;
+
+	int lastSceneIndex;
 
 	//PRIVATE VARIABLES
 
@@ -26,6 +30,16 @@ public class PanCamera : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		//SceneUnloadedMethod (SceneManager.GetActiveScene ());
+		if (lastSceneIndex != SceneManager.GetActiveScene ().buildIndex) 
+		{
+			this.gameObject.SetActive (true);
+		}
+		//panCamera.SetActive (true);
+		if (lastSceneIndex == SceneManager.GetActiveScene ().buildIndex) 
+		{
+			this.gameObject.SetActive (false);
+		}
 		
 		switch (checkpoints) 
 		{
@@ -62,5 +76,34 @@ public class PanCamera : MonoBehaviour {
 	void DeactivateElectrifyText()
 	{
 		electrifyText.enabled = false;
+	}
+
+	// we can use the SceneUnloaded delegate of scenemanager to listen for scenes that have been unloaded
+	void OnEnable()        {    SceneManager.sceneUnloaded += SceneUnloadedMethod;        }
+	void OnDisable()        {    SceneManager.sceneUnloaded -= SceneUnloadedMethod;        }
+
+	//int lastSceneIndex = 0;
+
+	// looks a bit funky but the method signature must match the scenemanager delegate signature
+	void SceneUnloadedMethod (Scene sceneNumber)
+	{
+		//int sceneIndex = sceneNumber.buildIndex;
+		int sceneIndex = SceneManager.GetActiveScene ().buildIndex;
+		// only want to update last scene unloaded if were not just reloading the current scene
+		if(lastSceneIndex != sceneIndex)
+		{
+			lastSceneIndex = sceneIndex;
+			Debug.Log("unloaded scene is : " + lastSceneIndex);
+			//this.gameObject.SetActive (false);
+		}
+		if (lastSceneIndex == sceneIndex) 
+		{
+			this.gameObject.SetActive (false);
+			//player.SetActive (true);
+		}
+	}
+	public int GetLastSceneNumber()
+	{
+		return lastSceneIndex;
 	}
 }

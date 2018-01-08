@@ -18,15 +18,15 @@ public class PauseMenu : MonoBehaviour {
 	public GameObject panCamera;
 	public bool isScene = true;
 
+	int lastSceneIndex = 0;
+
 	void Start () {
 		 
 		if (isScene == true)
 		{
 			LivesUI.SetActive (false);
-
 			LivesLvStartUI.SetActive (true);
 			player.SetActive (false);
-
 			enemy.SetActive (false);
 			Invoke ("DeactivateLivesLvStartUI", 5.0f);
 		}
@@ -76,8 +76,43 @@ public class PauseMenu : MonoBehaviour {
 	void DeactivateLivesLvStartUI()
 	{
 		LivesLvStartUI.SetActive (false);
-		panCamera.SetActive (true);
+		if (lastSceneIndex != SceneManager.GetActiveScene ().buildIndex) 
+		{
+				panCamera.SetActive (true);
+		}
+		//panCamera.SetActive (true);
+		if (lastSceneIndex == SceneManager.GetActiveScene ().buildIndex) 
+		{
+			panCamera.SetActive (false);
+		}
 		isScene = false;
+	}
+
+	// we can use the SceneUnloaded delegate of scenemanager to listen for scenes that have been unloaded
+	void OnEnable()        {    SceneManager.sceneUnloaded += SceneUnloadedMethod;        }
+	void OnDisable()        {    SceneManager.sceneUnloaded -= SceneUnloadedMethod;        }
+
+	//int lastSceneIndex = 0;
+
+	// looks a bit funky but the method signature must match the scenemanager delegate signature
+	void SceneUnloadedMethod (Scene sceneNumber)
+	{
+		//int sceneIndex = sceneNumber.buildIndex;
+		int sceneIndex = SceneManager.GetActiveScene ().buildIndex;
+		// only want to update last scene unloaded if were not just reloading the current scene
+		if(lastSceneIndex != sceneIndex)
+		{
+			lastSceneIndex = sceneIndex;
+			Debug.Log("unloaded scene is : " + lastSceneIndex);
+		}
+		if (lastSceneIndex == sceneIndex) 
+		{
+			panCamera.SetActive (false);
+		}
+	}
+	public int GetLastSceneNumber()
+	{
+		return lastSceneIndex;
 	}
 		
 
