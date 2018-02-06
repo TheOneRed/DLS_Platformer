@@ -14,6 +14,7 @@ public class PanCamera : MonoBehaviour {
 	public GameObject panCheckpoint2;
 	public Text electrifyText;
 	public GameObject LivesUI;
+	public GameObject enemy;
 	public bool alreadyPanned = false;
 
 	int lastSceneIndex;
@@ -34,6 +35,10 @@ public class PanCamera : MonoBehaviour {
 		if (lastSceneIndex != SceneManager.GetActiveScene ().buildIndex) 
 		{
 			this.gameObject.SetActive (true);
+			if (SceneManager.GetActiveScene ().name == "BossBattle1") 
+			{
+				this.gameObject.SetActive (false);
+			}
 		}
 		//panCamera.SetActive (true);
 		if (lastSceneIndex == SceneManager.GetActiveScene ().buildIndex) 
@@ -44,6 +49,15 @@ public class PanCamera : MonoBehaviour {
 		switch (checkpoints) 
 		{
 		case 0:
+			if (SceneManager.GetActiveScene ().name == "BossBattle1") 
+			{
+				this.gameObject.SetActive (false);
+				this.gameObject.SetActive (false);
+				player.gameObject.SetActive (true);
+				LivesUI.SetActive (true);
+				enemy.SetActive (true);
+				Invoke ("DeactivateElectrifyText", 2.5f);
+			}
 			this.transform.position = Vector2.MoveTowards (this.transform.position, panCheckpoint1.transform.position, speed * Time.deltaTime);
 			if ((this.transform.position - panCheckpoint1.transform.position).sqrMagnitude <= minDistance * minDistance) 
 			{
