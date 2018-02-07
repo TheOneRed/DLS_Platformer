@@ -21,12 +21,14 @@ public class Boss1Controller : MonoBehaviour {
 	public Transform FirePosition;
 	public float delay = 1.0f;
 	bool changeLocations = true;
+	public int damagerHitNumber = 0;
 
 
 	public bool singleFire = true;
 	public bool negative = true;
 	public bool positive = false;
 	public bool phase2 = false;
+	public bool phase3 = false;
 
 	private bool iSeeYou = false;
 	private float fire= 0.0f;
@@ -89,17 +91,49 @@ public class Boss1Controller : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll)
 	{
-        // ** Boss damage **
+		// ** Boss damage **
 
-        if (coll.gameObject.tag == "EnvironmentDamager") 
-		{
-			phase2 = true;
-			Destroy (coll.gameObject);
-			moveSpeed = 10;
-		
-			GameObject.Find ("Player").GetComponent<PlayerController2> ().environDamager.SetActive(true);
+		if (coll.gameObject.tag == "EnvironmentDamager") {
+			damagerHitNumber++;
+//			phase2 = true;
+//			if (phase2 == true && damagerHitNumber == 1) {
+//				damagerHitNumber++;
+//				Destroy (coll.gameObject);
+//				moveSpeed = 10;
+//		
+//				GameObject.Find ("Player").GetComponent<PlayerController2> ().environDamager.SetActive (true);
+//
+//				GameObject.Find ("ButtonController").GetComponent<ButtonController> ().current.SetActive (true);
+//				phase3 = true;
+//			}
+//			if (phase3 == true && damagerHitNumber == 2) {
+//
+//				Destroy (this.gameObject);
+//			}
 
-			GameObject.Find ("ButtonController").GetComponent<ButtonController> ().current.SetActive(true);
+			switch (damagerHitNumber) {
+			case 0:
+			
+				break;
+			case 1:
+				phase2 = true;
+				Destroy (coll.gameObject);
+				moveSpeed = 10;
+
+				GameObject.Find ("Player").GetComponent<PlayerController2> ().environDamager.SetActive (true);
+
+				GameObject.Find ("ButtonController").GetComponent<ButtonController> ().current.SetActive (true);
+				damagerHitNumber++;
+				break;
+			case 2:
+				//WHY DOES damagerHitNumber GO RIGHT TO 2???
+				damagerHitNumber++;
+				break;
+			case 3:
+				Destroy(this.gameObject);
+				Destroy (coll.gameObject);
+				break;
+			}
 		}
 	}
 
